@@ -1,7 +1,3 @@
-Certainly! I can provide the entire explanation for Unit IV: Centroid and Centre of Gravity in a single, comprehensive Markdown document.
-
----
-
 # Unit IV: Centroid and Centre of Gravity
 
 This unit delves into the fundamental concepts of **centroid** and **centre of gravity**, which are crucial for understanding the equilibrium and stability of various shapes and objects in engineering and physics.
@@ -101,10 +97,3 @@ $$
 }
 $$
 
----
-
-**Important Tip:** When solving problems, always carefully choose your origin and the directions of your coordinate axes. A wise choice can significantly simplify your calculations.
-
----
-
-I hope this comprehensive Markdown explanation is exactly what you were looking for! Let me know if you have any other questions.
