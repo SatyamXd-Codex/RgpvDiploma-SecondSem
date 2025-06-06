@@ -1,6 +1,4 @@
-Absolutely! Let's explain all the Optics topics in English, focusing on clear, point-by-point explanations with formulas and derivations where necessary, making sure everything is easy to understand.
 
----
 
 ## UNIT - 2: Optics
 
@@ -459,6 +457,3 @@ Optical projection systems are devices that project an enlarged image of a small
     * **Digital Projectors:** To display images and videos from computers, laptops, or other digital sources onto large screens.
     * **Photography Enlargers:** To create larger photographic prints from negatives.
 
----
-
-I hope this detailed, point-by-point explanation in English, with formulas and derivations, helps you understand all the concepts of Optics clearly! Let me know if anything is still unclear or if you have more questions.
