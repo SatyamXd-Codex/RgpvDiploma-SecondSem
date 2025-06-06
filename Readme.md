@@ -5,6 +5,8 @@ Welcome to the **RGPV Diploma 2nd Semester** subject-wise repository. This GitHu
 - **Engineering Mechanics**
 - **FEEE (Fundamentals of Electrical and Electronics Engineering)**
 - **Physics**
+- **Engineering Mathematics – II**
+- **IITS (Introduction to Information Technology & Science)**
 
 Each subject is divided into unit-wise markdown files (`Unit1.md`, `Unit2.md`, etc.) for easy learning and quick revision.
 
@@ -47,6 +49,30 @@ Topics covered:
 - Modern Physics (Laser, Fiber Optics, Nano Science)
 
 > 📁 Explore notes inside the folder: [`Physics`](./Physics/)
+
+---
+
+### 📐 [Engineering Mathematics – II](./Mathematics/)
+Topics covered:
+- Determinants and Matrices  
+- Integral Calculus  
+- Coordinate Geometry  
+- Vector Algebra  
+- Differential Equations with MATLAB Intro
+
+> 📁 Explore notes inside the folder: [`Mathematics`](./Mathematics/)
+
+---
+
+### 💻 [IITS – Intro to Information Technology & Science](./IITS/)
+Topics covered:
+- Basic Internet Skills & Hardware  
+- OS Installation (Linux, Windows), Unix Commands  
+- HTML4, CSS, Personal Webpage  
+- Office Tools: Writer, Calc, Impress  
+- Information Security Best Practices
+
+> 📁 Explore notes inside the folder: [`IITS`](./IITS/)
 
 ---
 
