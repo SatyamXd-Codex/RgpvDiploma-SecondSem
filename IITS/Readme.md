@@ -6,7 +6,7 @@ Welcome to the GitHub repository for **ICT Tools / Computer Fundamentals**, alig
 
 ## 📘 Syllabus Units Covered
 
-### 🌐 [Unit I: Internet Skills & Hardware Awareness](./UNIT-1.md)
+### 🌐 [Unit I: Internet Skills & Hardware Awareness](./UNIT1.md)
 - Understanding browsers, using search engines smartly  
 - Digital India portals (State/National), RGPV College Portals  
 - Overview of computer hardware:
@@ -15,7 +15,7 @@ Welcome to the GitHub repository for **ICT Tools / Computer Fundamentals**, alig
 
 ---
 
-### 💾 [Unit II: OS Installation & Linux Commands](./UNIT-2.md)
+### 💾 [Unit II: OS Installation & Linux Commands](./UNIT2.md)
 - Installing Windows and Linux operating systems  
 - Basics of Unix/Linux shell  
 - Common shell commands and usage  
@@ -23,21 +23,21 @@ Welcome to the GitHub repository for **ICT Tools / Computer Fundamentals**, alig
 
 ---
 
-### 🌍 [Unit III: HTML & CSS Basics](./UNIT-3.md)
+### 🌍 [Unit III: HTML & CSS Basics](./UNIT3.md)
 - HTML4: Tags, tables, forms, layout structure  
 - CSS: Styling techniques (inline, internal)  
 - Create your first personal webpage
 
 ---
 
-### 🧮 [Unit IV: Office Tools – OpenOffice Suite](./UNIT-4.md)
+### 🧮 [Unit IV: Office Tools – OpenOffice Suite](./UNIT4.md)
 - **Writer**: Word processing, formatting text, adding images  
 - **Calc**: Spreadsheets, formulas, basic calculations  
 - **Impress**: Making simple presentations with transitions and slides
 
 ---
 
-### 🔐 [Unit V: Information Security Practices](./UNIT-5.md)
+### 🔐 [Unit V: Information Security Practices](./UNIT5.md)
 - Creating strong passwords  
 - Safe browsing & phishing awareness  
 - Antivirus, firewall, and software update habits  
