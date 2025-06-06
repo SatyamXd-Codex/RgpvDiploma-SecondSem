@@ -1,6 +1,4 @@
-Let's break down the topics in UNIT I: Overview of Electronic Components & Signals, point by point, with explanations, formulas, and derivations where applicable.
 
----
 
 ## UNIT I: Overview of Electronic Components & Signals
 
@@ -345,7 +343,3 @@ These describe how the source's output is determined.
     * **Current-Controlled Current Source (CCCS):** Output current is proportional to a controlling current. $I_{out} = k \times I_{control}$
         * Where 'k' is a constant of proportionality (gain).
 * **Applications:** Used extensively in modeling transistor circuits, operational amplifier circuits, and other complex active networks in circuit analysis.
-
----
-
-This detailed breakdown covers all the topics mentioned in UNIT I, providing definitions, working principles, formulas, derivations where relevant, and applications for each component and signal type.
