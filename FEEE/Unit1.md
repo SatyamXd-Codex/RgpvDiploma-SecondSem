@@ -1213,102 +1213,920 @@ Where:
 - Different AC waveform types
 - Real-world applications
 
-#### B. Voltage/Current Signals
+---
 
-Signals can be represented as variations in either voltage or current.
+### 📊 B. Voltage/Current Signals | वोल्टेज/करंट सिग्नल्स
 
-* **Voltage Signal:** Represents information by varying the potential difference across two points in a circuit. Measured in Volts (V).
-* **Current Signal:** Represents information by varying the flow of charge through a point in a circuit. Measured in Amperes (A).
+Signals can be represented as variations in either voltage or current. Both carry information but have different characteristics and applications.
 
-#### C. Periodic/Non-periodic Signals
+**Signal representation दो तरीकों से हो सकती है:**
+- Voltage variations (potential difference changes)
+- Current variations (charge flow changes)
 
-##### 1. Periodic Signals
+```
+📊 Signal Representation:
+    ELECTRICAL SIGNALS
+           │
+    ┌──────┴───────┐
+    │              │
+┌───▼───┐      ┌───▼───┐
+│Voltage│      │Current│
+│Signal │      │Signal │
+└───────┘      └───────┘
+    │              │
+   (V)            (A)
+```
 
-* **Definition:** A signal that repeats its pattern exactly after a fixed interval of time.
-* **Characteristics:**
-    * Has a well-defined **period (T)**: The smallest time interval after which the signal repeats itself.
-    * Has a well-defined **frequency (f)**: The number of cycles per second ($f = 1/T$). Unit is Hertz (Hz).
-* **Examples:** Sine wave, square wave, triangular wave.
-* **Mathematical Representation:** $x(t) = x(t + nT)$ for any integer $n$.
+---
 
-##### 2. Non-periodic (Aperiodic) Signals
+#### ⚡ 1. Voltage Signal | वोल्टेज सिग्नल
 
-* **Definition:** A signal that does not repeat its pattern exactly after any fixed interval of time.
-* **Characteristics:**
-    * Does not have a defined period or fundamental frequency.
-    * Their spectral content is continuous (contains a continuum of frequencies).
-* **Examples:** Speech, music, random noise, a single pulse.
+**Definition | परिभाषा:**
+Voltage signals represent information by varying the potential difference across two points in a circuit. यह electrical energy per unit charge का measure है।
 
-#### D. Average, RMS, Peak Values
+**Voltage signal की विशेषताएं:**
+- Potential difference variations से information carry करता है
+- दो points के बीच measured होता है
+- Unit: Volts (V)
+- High input impedance devices के लिए suitable
 
-These are different ways to quantify the "size" or "strength" of an AC signal.
+**📐 Mathematical Representation:**
+```
+v(t) = V(t)   [Volts]
+```
 
-##### 1. Peak Value ($V_P$ or $I_P$)
+**🎯 Types | प्रकार:**
 
-* **Definition:** The maximum instantaneous value of the signal from the zero level to its highest point. For a symmetrical waveform, it's the amplitude.
-* **For Sine Wave:** $V(t) = V_P \sin(\omega t + \phi)$
+**1. DC Voltage Signal:**
+```
+v(t) = VDC = constant
+Example: 5V, 12V, 24V
+```
 
-##### 2. Peak-to-Peak Value ($V_{PP}$ or $I_{PP}$)
+**2. AC Voltage Signal:**
+```
+v(t) = VP sin(ωt + φ)
+Example: 230V RMS, 50Hz
+```
 
-* **Definition:** The difference between the maximum positive peak and the maximum negative peak.
-* **For Symmetrical Waveforms (like sine wave):** $V_{PP} = 2 \times V_P$
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
 
-##### 3. Average Value ($V_{avg}$ or $I_{avg}$)
+**1. Audio Signal:**
+- Microphone output: मV range
+- Speaker input: V range
+- Music systems में voltage signals
 
-* **Definition:** The DC equivalent of a periodic signal. For a full cycle of a symmetrical AC waveform (like a sine wave), the average value is zero. Therefore, the average value is usually calculated over a half-cycle for such waveforms.
-* **Formula (General for a function $f(t)$ over a period $T$):**
-    * $V_{avg} = \frac{1}{T} \int_{t_0}^{t_0+T} V(t) dt$
-* **For a Sine Wave (over a half-cycle, $0$ to $\pi$):**
-    * $V_{avg} = \frac{1}{\pi} \int_{0}^{\pi} V_P \sin(\theta) d\theta = \frac{V_P}{\pi} [-\cos(\theta)]_0^{\pi} = \frac{V_P}{\pi} (-(-1) - (-1)) = \frac{2V_P}{\pi} \approx 0.637 V_P$
-* **For a Full Cycle of Sine Wave:** $V_{avg} = 0$.
+**2. Sensor Output:**
+- Temperature sensor: 0-5V for 0-100°C
+- Pressure sensor voltage output
 
-##### 4. RMS (Root Mean Square) Value ($V_{rms}$ or $I_{rms}$)
+**3. Digital Logic:**
+- Logic 0: 0V
+- Logic 1: 5V (TTL) या 3.3V (CMOS)
 
-* **Definition:** The effective value of an AC signal, equivalent to the DC voltage or current that would produce the same amount of heat in a given resistive load. It's the most common way to specify AC voltage/current.
-* **Formula (General for a function $f(t)$ over a period $T$):**
-    * $V_{rms} = \sqrt{\frac{1}{T} \int_{t_0}^{t_0+T} [V(t)]^2 dt}$
-* **Derivation for a Sine Wave ($V(t) = V_P \sin(\omega t)$):**
-    * $V_{rms}^2 = \frac{1}{T} \int_{0}^{T} (V_P \sin(\omega t))^2 dt$
-    * $V_{rms}^2 = \frac{V_P^2}{T} \int_{0}^{T} \sin^2(\omega t) dt$
-    * Using the identity $\sin^2(x) = \frac{1 - \cos(2x)}{2}$:
-    * $V_{rms}^2 = \frac{V_P^2}{T} \int_{0}^{T} \frac{1 - \cos(2\omega t)}{2} dt$
-    * $V_{rms}^2 = \frac{V_P^2}{2T} \left[ t - \frac{\sin(2\omega t)}{2\omega} \right]_0^T$
-    * Since $2\omega T = 2 (2\pi f) (1/f) = 4\pi$, $\sin(4\pi) = 0$.
-    * $V_{rms}^2 = \frac{V_P^2}{2T} [T - 0] = \frac{V_P^2}{2}$
-    * $V_{rms} = \sqrt{\frac{V_P^2}{2}} = \frac{V_P}{\sqrt{2}} \approx 0.707 V_P$
-* **For a Sine Wave:**
-    * $V_{rms} = \frac{V_P}{\sqrt{2}}$
-    * $I_{rms} = \frac{I_P}{\sqrt{2}}$
-* **Relation to Peak-to-Peak:** $V_{rms} = \frac{V_{PP}}{2\sqrt{2}}$
+**🎯 Advantages | फायदे:**
+- Easy to measure (voltmeter से)
+- High input impedance circuits के लिए ideal
+- Low power transmission
+- Accurate signal processing
 
-#### E. Different Types of Signal Waveforms
+**Applications | अनुप्रयोग:**
+- Audio systems (amplifiers, speakers)
+- Instrumentation (multimeters, oscilloscopes)
+- Communication systems (antenna voltages)
+- Control systems (feedback signals)
 
-Besides sinusoidal, signals can have various shapes.
+---
 
-1.  **Sinusoidal Wave:**
-    * **Formula:** $V(t) = V_P \sin(\omega t + \phi)$
-    * **Description:** Smooth, continuous oscillation. Pure tone.
-    * **Applications:** AC power distribution, radio frequency signals, audio signals.
+#### 🔌 2. Current Signal | करंट सिग्नल
 
-2.  **Square Wave:**
-    * **Description:** Alternates rapidly between two fixed voltage levels, spending equal time at each level.
-    * **Characteristics:** Contains odd harmonics of the fundamental frequency.
-    * **Applications:** Digital clock signals, timing circuits, switching power supplies.
+**Definition | परिभाषा:**
+Current signals represent information by varying the flow of charge through a point in a circuit. यह charge flow rate का measure है।
 
-3.  **Triangular Wave:**
-    * **Description:** Rises linearly to a peak, then falls linearly to a trough, and repeats.
-    * **Characteristics:** Contains odd harmonics, but their amplitude decreases faster than square waves.
-    * **Applications:** Sweep generators (oscilloscopes), function generators, pulse width modulation (PWM).
+**Current signal की विशेषताएं:**
+- Charge flow variations से information carry करता है
+- Conductor से through measured होता है
+- Unit: Amperes (A)
+- Low impedance transmission के लिए suitable
 
-4.  **Sawtooth Wave:**
-    * **Description:** Rises linearly to a peak, then drops sharply back to the starting level, and repeats. (Or falls linearly and rises sharply).
-    * **Characteristics:** Contains all harmonics (both odd and even).
-    * **Applications:** Oscilloscope sweep signals, music synthesizers.
+**📐 Mathematical Representation:**
+```
+i(t) = I(t)   [Amperes]
+```
 
-5.  **Pulse Wave:**
-    * **Description:** A signal that is typically high for a short duration and then low for a longer duration (or vice versa).
-    * **Characteristics:** Defined by pulse width and duty cycle.
-    * **Applications:** Digital communication, radar, triggering circuits.
+**🎯 Types | प्रकार:**
+
+**1. DC Current Signal:**
+```
+i(t) = IDC = constant
+Example: 1A, 100mA, 10μA
+```
+
+**2. AC Current Signal:**
+```
+i(t) = IP sin(ωt + φ)
+Example: RMS current values
+```
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+**1. Industrial Process Control:**
+- 4-20mA current loop
+- 4mA = 0% signal, 20mA = 100% signal
+- Long distance transmission के लिए ideal
+
+**2. Power Systems:**
+- Motor current monitoring
+- Power consumption measurement
+
+**3. Lighting Systems:**
+- LED current control
+- Constant current drivers
+
+**🎯 Advantages | फायदे:**
+- Long distance transmission में noise immunity
+- Accurate over long wires
+- Independent of wire resistance (current loop)
+- Industrial applications में widely used
+
+**💡 4-20mA Current Loop Example:**
+```
+┌─────────┐     ┌──────────┐     ┌─────────┐
+│ Sensor  │────▶│   Wire   │────▶│Control  │
+│(4-20mA) │     │(Long Dist)│     │ System  │
+└─────────┘     └──────────┘     └─────────┘
+
+0%   → 4mA
+50%  → 12mA  
+100% → 20mA
+```
+
+**Applications | अनुप्रयोग:**
+- Industrial process control
+- Motor current monitoring
+- LED drivers (constant current)
+- Power measurement systems
+- Battery charging circuits
+
+---
+
+### 🔍 Voltage vs Current Signals Comparison
+
+| Parameter | Voltage Signal | Current Signal |
+|-----------|----------------|----------------|
+| **Measurement** | Between two points | Through a point |
+| **Unit** | Volts (V) | Amperes (A) |
+| **Transmission** | High impedance | Low impedance |
+| **Noise Immunity** | Lower | Higher |
+| **Distance** | Short to medium | Long distance |
+| **Applications** | Audio, Logic | Industrial, Power |
+| **Example** | 0-10V sensor | 4-20mA loop |
+
+**💡 Exam Important Points:**
+- Voltage: Potential difference, measured across
+- Current: Charge flow, measured through
+- Voltage signals: Audio, logic, instrumentation
+- Current signals: Industrial, power systems
+- 4-20mA current loop standard
+- Advantages और applications clearly याद रखें
+
+---
+
+### 🔄 C. Periodic/Non-periodic Signals | आवर्ती/अनावर्ती सिग्नल्स
+
+---
+
+#### 🔁 1. Periodic Signals | आवर्ती सिग्नल्स
+
+**Definition | परिभाषा:**
+A signal that repeats its pattern exactly after a fixed interval of time called the period. Pattern regular intervals में repeat होता रहता है।
+
+**Periodic signal की विशेषताएं:**
+- Fixed time interval के बाद repeat होता है
+- Well-defined period (T) होता है
+- Predictable behavior
+- Frequency domain में discrete spectrum
+
+```
+📊 Periodic Signal Example:
+    Amplitude
+       │     ╭─╮     ╭─╮     ╭─╮
+       ├────╱───╲───╱───╲───╱───╲── Time
+       │   ╱     ╲ ╱     ╲ ╱     ╲
+       ├──╱───────╱───────╱───────╲
+       └─────────────────────────────
+           ←─T─→   ←─T─→   ←─T─→
+         Period  Period  Period
+```
+
+**📐 Mathematical Definition:**
+```
+x(t) = x(t + nT)  for any integer n
+```
+Where:
+- T = Period (smallest repetition time)
+- n = Any integer (0, ±1, ±2, ...)
+
+**🎯 Key Parameters | मुख्य पैरामीटर:**
+
+**1. Period (T):**
+- Smallest time interval for repetition
+- Measured in seconds
+- T = time for one complete cycle
+
+**2. Frequency (f):**
+- Number of cycles per second
+- f = 1/T Hz
+- Inverse of period
+
+**3. Angular Frequency (ω):**
+- ω = 2πf = 2π/T rad/second
+
+**📊 Examples | उदाहरण:**
+
+**1. Sinusoidal Wave:**
+```
+v(t) = VP sin(2πft + φ)
+Period: T = 1/f
+```
+
+**2. Square Wave:**
+```
+Duty cycle = 50%
+Period = Time for high + Time for low
+```
+
+**3. Triangular Wave:**
+```
+Linear rise + Linear fall = One period
+```
+
+**4. Sawtooth Wave:**
+```
+Ramp up (or down) + Sharp transition = Period
+```
+
+**🎯 Applications | अनुप्रयोग:**
+- **Power supply:** 50Hz AC mains
+- **Clock signals:** Computer processors
+- **Audio tones:** Musical notes
+- **Radio carriers:** AM/FM broadcasting
+- **Heartbeat:** ECG signals
+
+---
+
+#### 📊 2. Non-periodic (Aperiodic) Signals | अनावर्ती सिग्नल्स
+
+**Definition | परिभाषा:**
+A signal that does not repeat its pattern exactly after any fixed interval of time. कोई भी fixed pattern repeat नहीं होता।
+
+**Non-periodic signal की विशेषताएं:**
+- कोई defined period नहीं होता
+- Pattern कभी exactly repeat नहीं होता
+- Continuous frequency spectrum
+- Unpredictable या random nature
+
+```
+📊 Non-periodic Signal Examples:
+    Amplitude
+       │  ╭╮  ╭─╮    ╭╮╭╮
+       ├─╱──╲╱───╲──╱──╱──╲─── Time
+       │╱      ╲   ╲╱      ╲
+       ├────────╲───────────╲─
+       └──────────────────────
+         No repeating pattern
+```
+
+**🎯 Types | प्रकार:**
+
+**1. Random Signals:**
+- Noise signals
+- Thermal noise in resistors
+- Atmospheric interference
+
+**2. Transient Signals:**
+- Single pulse
+- Step response
+- Impulse response
+
+**3. Speech/Music:**
+- Human voice patterns
+- Natural sounds
+- Music (complex combinations)
+
+**📊 Examples | उदाहरण:**
+
+**1. Random Noise:**
+```
+White noise: All frequencies equally
+Pink noise: 1/f spectrum
+```
+
+**2. Single Pulse:**
+```
+    ┌────┐
+────┘    └──── One-time event
+```
+
+**3. Speech Signal:**
+```
+Complex waveform with varying:
+- Amplitude
+- Frequency
+- Duration
+```
+
+**4. Exponential Decay:**
+```
+v(t) = V₀ e^(-t/τ)
+Capacitor discharge signal
+```
+
+**🎯 Applications | अनुप्रयोग:**
+- **Communication:** Speech, music transmission
+- **Radar:** Target detection pulses
+- **Control systems:** Step inputs, disturbances
+- **Biomedical:** EEG, EMG signals
+- **Economics:** Stock market data
+
+---
+
+### 📊 Periodic vs Non-periodic Comparison
+
+| Aspect | Periodic | Non-periodic |
+|--------|----------|--------------|
+| **Pattern** | Repeats exactly | Never repeats |
+| **Period** | Well-defined T | No period |
+| **Frequency** | Discrete spectrum | Continuous spectrum |
+| **Predictability** | Predictable | Unpredictable |
+| **Examples** | Sine, Square waves | Speech, Noise |
+| **Analysis** | Fourier Series | Fourier Transform |
+| **Applications** | Power, Clocks | Communication |
+
+**🔍 Special Cases:**
+
+**1. Almost Periodic:**
+- Nearly repeats but not exactly
+- Long-term patterns with variations
+
+**2. Quasi-periodic:**
+- Sum of periodic signals with different periods
+- Complex but deterministic
+
+**📐 Mathematical Analysis:**
+
+**Periodic Signals:**
+- Fourier Series representation
+- Discrete frequency components
+- Harmonic analysis
+
+**Non-periodic Signals:**
+- Fourier Transform representation
+- Continuous frequency spectrum
+- Statistical analysis (for random signals)
+
+**💡 Exam Important Points:**
+- Periodic: x(t) = x(t + nT)
+- Period T और frequency f = 1/T relationship
+- Non-periodic: No repetition pattern
+- Fourier Series vs Fourier Transform
+- Examples को clearly identify करना
+- Real-world applications important हैं
+
+---
+
+### 📐 D. Average, RMS, Peak Values | औसत, आरएमएस, शिखर मान
+
+These are different ways to quantify the "size" or "strength" of an AC signal. हर measurement का अपना significance और application है।
+
+**Signal values क्यों important हैं?**
+- Power calculations के लिए
+- Equipment ratings specify करने के लिए
+- Signal comparison करने के लिए
+- Design parameters fix करने के लिए
+
+```
+📊 Signal Value Relationships:
+        Peak Value (VP)
+            ╱╲
+           ╱  ╲
+          ╱    ╲     ← Instantaneous values
+    ─────╱──────╲─────
+        ╱        ╲
+       ╱          ╲
+    RMS ├──────────┤ Average (for half cycle)
+      0 ├──────────┤
+```
+
+---
+
+#### 🔺 1. Peak Value (VP or IP) | शिखर मान
+
+**Definition | परिभाषा:**
+The maximum instantaneous value of the signal from the zero level to its highest point. यह signal की maximum value होती है।
+
+**Peak value की विशेषताएं:**
+- Maximum instantaneous value
+- Zero से highest point तक
+- Symmetrical waveforms के लिए amplitude
+- Equipment breakdown voltage के लिए important
+
+**📐 Mathematical Representation:**
+For sinusoidal signal:
+```
+v(t) = VP sin(ωt + φ)
+```
+Where VP = Peak value
+
+**📊 Examples | उदाहरण:**
+- **Household AC:** 230V RMS = 325V Peak
+- **Digital logic:** 5V logic = 5V peak
+- **Audio signals:** Music peaks decide distortion
+
+**🎯 Applications | अनुप्रयोग:**
+- Insulation design (breakdown voltage)
+- Component voltage ratings
+- Amplifier saturation limits
+- Digital signal levels
+
+---
+
+#### 📏 2. Peak-to-Peak Value (VPP or IPP) | शिखर-से-शिखर मान
+
+**Definition | परिभाषा:**
+The difference between the maximum positive peak and the maximum negative peak. यह total signal swing होती है।
+
+**📐 Mathematical Formula:**
+For symmetrical waveforms:
+```
+VPP = (+VP) - (-VP) = 2VP
+```
+
+**🎯 Significance:**
+- Total signal excursion
+- Oscilloscope measurements में common
+- Dynamic range indication
+- ADC input range specification
+
+**📊 Practical Example:**
+```
+AC Signal: ±10V peaks
+VPP = (+10V) - (-10V) = 20V
+VP = 10V
+```
+
+---
+
+#### 📊 3. Average Value (Vavg or Iavg) | औसत मान
+
+**Definition | परिभाषा:**
+The DC equivalent of a periodic signal. Full cycle के लिए symmetrical AC waveforms का average zero होता है, इसलिए half-cycle के लिए calculate करते हैं।
+
+**📐 General Formula:**
+For any function f(t) over period T:
+```
+Vavg = (1/T) ∫[0 to T] V(t) dt
+```
+
+**🔍 For Sinusoidal Wave (Half-cycle analysis):**
+
+**Mathematical Derivation:**
+```
+v(t) = VP sin(ωt)
+For half cycle: 0 ≤ t ≤ π/ω
+
+Vavg = (1/(π/ω)) ∫[0 to π/ω] VP sin(ωt) dt
+     = (ω/π) × VP ∫[0 to π/ω] sin(ωt) dt
+     = (ω/π) × VP × [-cos(ωt)/ω][0 to π/ω]
+     = (VP/π) × [-cos(π) + cos(0)]
+     = (VP/π) × [-(-1) + 1]
+     = (VP/π) × 2
+     = (2VP/π) ≈ 0.637 VP
+```
+
+**🎯 Key Results:**
+- **Sine wave (half-cycle):** Vavg = 0.637 VP
+- **Square wave:** Vavg = VP (for positive half)
+- **Full cycle (symmetrical):** Vavg = 0
+
+**📊 Different Waveforms:**
+
+| Waveform | Average Value |
+|----------|---------------|
+| **Sine** | 0.637 VP (half-cycle) |
+| **Square** | VP (constant level) |
+| **Triangle** | 0.5 VP (half-cycle) |
+| **Sawtooth** | 0.5 VP |
+| **Full cycle AC** | 0 |
+
+**🎯 Applications:**
+- DC component calculation
+- Rectifier output (DC conversion)
+- Moving coil instruments
+- Battery charging average current
+
+---
+
+#### ⚡ 4. RMS (Root Mean Square) Value | वर्ग माध्य मूल मान
+
+**Definition | परिभाषा:**
+The effective value of an AC signal, equivalent to the DC voltage or current that would produce the same amount of heat in a given resistive load. यह सबसे important value है AC circuits के लिए।
+
+**RMS value क्यों important है?**
+- Actual heating effect represent करता है
+- Power calculations के लिए use होता है
+- AC equipment ratings में specify होता है
+- DC equivalent value देता है
+
+**📐 General Formula:**
+For any function f(t) over period T:
+```
+VRMS = √[(1/T) ∫[0 to T] [V(t)]² dt]
+```
+
+**🔍 Detailed Derivation for Sine Wave:**
+
+Given: v(t) = VP sin(ωt)
+
+**Step 1:** Square the function
+```
+[v(t)]² = [VP sin(ωt)]² = VP² sin²(ωt)
+```
+
+**Step 2:** Find mean of squared values
+```
+Mean = (1/T) ∫[0 to T] VP² sin²(ωt) dt
+```
+
+**Step 3:** Use trigonometric identity
+```
+sin²(ωt) = (1 - cos(2ωt))/2
+```
+
+**Step 4:** Substitute and integrate
+```
+Mean = (VP²/T) ∫[0 to T] (1 - cos(2ωt))/2 dt
+     = (VP²/2T) ∫[0 to T] [1 - cos(2ωt)] dt
+     = (VP²/2T) [t - sin(2ωt)/(2ω)][0 to T]
+```
+
+**Step 5:** Since T = 2π/ω, the cos term integrates to zero
+```
+Mean = (VP²/2T) × T = VP²/2
+```
+
+**Step 6:** Take square root
+```
+VRMS = √(VP²/2) = VP/√2 ≈ 0.707 VP
+```
+
+**🎯 Final Results for Sine Wave:**
+```
+VRMS = VP/√2 = 0.707 VP
+IRMS = IP/√2 = 0.707 IP
+```
+
+**📊 RMS Values for Different Waveforms:**
+
+| Waveform | RMS Value |
+|----------|-----------|
+| **Sine** | 0.707 VP |
+| **Square** | VP (equal to peak) |
+| **Triangle** | 0.577 VP |
+| **Sawtooth** | 0.577 VP |
+
+**🔍 Power Relationship:**
+```
+P = VRMS × IRMS (for resistive load)
+P = VRMS²/R = IRMS² × R
+```
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+**1. Household AC Supply:**
+```
+230V RMS (India)
+Peak value = 230 × √2 = 325V
+Average value = 230 × 0.637 = 147V (half-cycle)
+```
+
+**2. Power Calculation:**
+```
+P = VRMS²/R = (230)²/R = 52,900/R Watts
+```
+
+**🎯 Applications:**
+- All AC equipment ratings (230V, 110V)
+- Power calculations
+- Heating effect calculations
+- Multimeter readings
+- Power transmission specifications
+
+---
+
+### 📊 Complete Comparison Table
+
+| Value Type | Symbol | Sine Wave | Square Wave | Triangle |
+|------------|--------|-----------|-------------|----------|
+| **Peak** | VP | VP | VP | VP |
+| **Peak-to-Peak** | VPP | 2VP | 2VP | 2VP |
+| **Average** | Vavg | 0.637 VP | VP | 0.5 VP |
+| **RMS** | VRMS | 0.707 VP | VP | 0.577 VP |
+
+**🔍 Important Relationships:**
+```
+For Sine Wave:
+VP = √2 × VRMS = 1.414 × VRMS
+VRMS = VP/√2 = 0.707 × VP
+Vavg = (2/π) × VP = 0.637 × VP
+
+Peak-to-RMS ratio = √2 = 1.414
+Average-to-RMS ratio = 2/(π√2) = 0.9
+```
+
+**💡 Exam Important Points:**
+- RMS = effective value = heating effect equivalent
+- Sine wave: RMS = 0.707 × Peak
+- Average (half-cycle) = 0.637 × Peak
+- Peak-to-peak = 2 × Peak (symmetrical waves)
+- Power always calculated using RMS values
+- Household ratings always in RMS
+- Mathematical derivations important हैं
+
+---
+
+### 🌊 E. Different Types of Signal Waveforms | विभिन्न प्रकार के सिग्नल वेवफॉर्म
+
+Besides sinusoidal, signals can have various shapes. हर waveform के अपने characteristics और applications होते हैं।
+
+**Waveforms क्यों different होते हैं?**
+- Different applications के लिए suitable
+- Other frequency components provide करने के लिए
+- Specific timing requirements के लिए
+- Circuit behavior को optimize करने के लिए
+
+```
+📊 Common Waveform Types:
+    WAVEFORMS
+        │
+  ┌─────┼─────┼─────┼─────┐
+  │     │     │     │     │
+Sine  Square Triangle Sawtooth Pulse
+```
+
+---
+
+#### 🌊 1. Sinusoidal Wave | साइन तरंग
+
+**Definition | परिभाषा:**
+A smooth, continuous oscillation that can be mathematically described by sine or cosine functions. यह सबसे pure और basic waveform है।
+
+**📐 Mathematical Formula:**
+```
+v(t) = VP sin(ωt + φ)
+```
+Where:
+- VP = Peak amplitude
+- ω = Angular frequency (2πf)
+- φ = Phase angle
+- t = Time
+
+```
+📊 Sine Wave:
+    Voltage
+       │      ╭─╮      ╱
+    VP ├─────╱───╲────╱───
+       │    ╱     ╲  ╱
+     0 ├───╱───────╲╱─────── Time
+       │  ╱         ╱╲
+  -VP ├─╱─────────╱───╲────
+       └──────────────────
+         0°  90° 180° 270° 360°
+```
+
+**🎯 Characteristics | विशेषताएं:**
+- **Pure tone:** Single frequency component
+- **Continuous:** No discontinuities या sharp edges
+- **Symmetrical:** Positive और negative halves equal
+- **RMS = 0.707 × Peak**
+- **Average = 0 (full cycle)**
+
+**📊 Key Properties:**
+- **Frequency spectrum:** Single line at fundamental frequency
+- **Harmonic content:** केवल fundamental frequency
+- **Power distribution:** सारी power fundamental में
+- **Phase relationship:** Well-defined phase
+
+**🎯 Applications | अनुप्रयोग:**
+- **AC Power Distribution:** 50Hz/60Hz mains supply
+- **Audio Signals:** Pure tones, music
+- **Radio Frequency:** Carrier waves
+- **Test Signals:** Function generators
+- **Mathematical Analysis:** Fourier transform basis
+
+---
+
+#### ⬜ 2. Square Wave | वर्गाकार तरंग
+
+**Definition | परिभाषा:**
+A signal that alternates rapidly between two fixed voltage levels, spending equal time at each level. Digital signals में बहुत common है।
+
+```
+📊 Square Wave:
+    Voltage
+       │ ┌─────┐     ┌─────┐
+    VP ├─┘     └─────┘     └── Time
+       │                    
+     0 ├────────────────────────
+       │ ←─T/2─→←─T/2─→
+       └────────────────────
+           ←──── T ────→
+```
+
+**📐 Mathematical Representation:**
+```
+Fourier Series:
+v(t) = (4VP/π)[sin(ωt) + (1/3)sin(3ωt) + (1/5)sin(5ωt) + ...]
+```
+
+**🎯 Characteristics | विशेषताएं:**
+- **Two levels only:** High और Low states
+- **Sharp transitions:** Instantaneous changes
+- **50% duty cycle:** Equal high और low times
+- **RMS = VP** (for ±VP square wave)
+- **Average = 0** (for symmetrical wave)
+
+**📊 Harmonic Content:**
+- **Fundamental:** Strongest component
+- **Odd harmonics only:** 3rd, 5th, 7th, ...
+- **Amplitude decreases:** As 1/n (n = harmonic number)
+- **No even harmonics:** Due to symmetry
+
+**🎯 Applications | अनुप्रयोग:**
+- **Digital Clock Signals:** CPU, microcontroller clocks
+- **Logic Circuits:** Binary data transmission
+- **Switching Power Supplies:** PWM control
+- **Timer Circuits:** 555 timer outputs
+- **Test Signals:** Digital system testing
+
+---
+
+#### 🔺 3. Triangular Wave | त्रिकोणीय तरंग
+
+**Definition | परिभाषा:**
+A signal that rises linearly to a peak, then falls linearly to a trough, and repeats. Linear ramp up और ramp down से बना होता है।
+
+```
+📊 Triangular Wave:
+    Voltage
+       │    ╱╲    ╱╲    ╱╲
+    VP ├───╱──╲──╱──╲──╱──╲── Time
+       │  ╱    ╲╱    ╲╱    ╲
+     0 ├─╱──────────────────╲─
+       │╱                    ╲
+  -VP ├─────────────────────── 
+       └───────────────────────
+          ←──── T ────→
+```
+
+**📐 Mathematical Representation:**
+```
+Fourier Series:
+v(t) = (8VP/π²)[sin(ωt) - (1/9)sin(3ωt) + (1/25)sin(5ωt) - ...]
+```
+
+**🎯 Characteristics | विशेषताएं:**
+- **Linear segments:** Constant slope regions
+- **Symmetrical:** About zero axis
+- **RMS = 0.577 × VP**
+- **Average = 0** (full cycle)
+- **Continuous:** No sharp discontinuities
+
+**📊 Harmonic Content:**
+- **Odd harmonics only:** 1st, 3rd, 5th, ...
+- **Amplitude decreases:** As 1/n² (faster than square wave)
+- **Reduced harmonic content:** Compared to square wave
+- **Smoother spectrum:** Less high-frequency content
+
+**🎯 Applications | अनुप्रयोग:**
+- **Sweep Generators:** Oscilloscope time base
+- **Function Generators:** Test equipment
+- **PWM Generation:** Motor speed control
+- **Audio Synthesis:** Musical instruments
+- **Voltage-Controlled Oscillators (VCO)**
+
+---
+
+#### ⚡ 4. Sawtooth Wave | आरा-दांत तरंग
+
+**Definition | परिभाषा:**
+A signal that rises (or falls) linearly to a peak, then drops (or rises) sharply back to the starting level. Ramp + sharp transition का combination है।
+
+```
+📊 Sawtooth Wave (Rising):
+    Voltage
+       │    ╱│    ╱│    ╱│
+    VP ├───╱─│───╱─│───╱─│── Time
+       │  ╱  │  ╱  │  ╱  │
+     0 ├─╱───│─╱───│─╱───│─
+       │     │     │     │
+       └─────│─────│─────│─
+          ←─T→ ←─T→ ←─T→
+```
+
+**📐 Mathematical Representation:**
+```
+Fourier Series:
+v(t) = (2VP/π)[sin(ωt) - (1/2)sin(2ωt) + (1/3)sin(3ωt) - ...]
+```
+
+**🎯 Characteristics | विशेषताएं:**
+- **Linear ramp:** Constant slope section
+- **Sharp reset:** Instantaneous return
+- **RMS = 0.577 × VP**
+- **Average = VP/2** (for 0 to VP sawtooth)
+- **Asymmetrical:** Different rise और fall times
+
+**📊 Harmonic Content:**
+- **All harmonics present:** Both odd और even
+- **Amplitude decreases:** As 1/n
+- **Rich harmonic content:** More harmonics than triangle
+- **Sharp transition:** Creates high-frequency components
+
+**🎯 Applications | अنुप्रयोग:**
+- **Oscilloscope Sweep:** CRT display scanning
+- **Music Synthesizers:** Rich harmonic content
+- **Timing Circuits:** Ramp generators
+- **TV/Monitor Scanning:** Horizontal deflection
+- **Analog-to-Digital Conversion:** Ramp ADC
+
+---
+
+#### 💫 5. Pulse Wave | स्पंद तरंग
+
+**Definition | परिभाषा:**
+A signal that is typically high for a short duration and then low for a longer duration (or vice versa). Duty cycle कम होता है।
+
+```
+📊 Pulse Wave:
+    Voltage
+       │ ┌──┐    ┌──┐    ┌──┐
+    VP ├─┘  └────┘  └────┘  └── Time
+       │                     
+     0 ├───────────────────────
+       │ ←─tw─→←─────T─────→
+       └─────────────────────
+       
+   Duty Cycle = tw/T × 100%
+```
+
+**🎯 Characteristics | विशेषताएं:**
+- **Variable duty cycle:** tw/T ratio changeable
+- **Sharp edges:** Fast rise और fall times
+- **Unequal high/low times:** Unlike square wave
+- **Average depends on duty cycle**
+- **RMS depends on duty cycle**
+
+**📊 Important Parameters:**
+- **Pulse width (tw):** High state duration
+- **Period (T):** Total cycle time
+- **Duty cycle (D):** D = tw/T × 100%
+- **Rise time (tr):** 10% to 90% transition
+- **Fall time (tf):** 90% to 10% transition
+
+**🎯 Applications | अनुप्रयोग:**
+- **Digital Communication:** Data transmission
+- **Radar Systems:** Target detection pulses
+- **PWM Control:** Motor speed, light dimming
+- **Triggering Circuits:** Timing controls
+- **Microcontroller Outputs:** Control signals
+
+---
+
+### 📊 Waveform Comparison Table
+
+| Waveform | RMS Value | Average | Harmonic Content | Applications |
+|----------|-----------|---------|------------------|--------------|
+| **Sine** | 0.707 VP | 0 | Fundamental only | Power, Audio |
+| **Square** | VP | 0 | Odd harmonics | Digital, Clocks |
+| **Triangle** | 0.577 VP | 0 | Odd harmonics (1/n²) | Sweep, PWM |
+| **Sawtooth** | 0.577 VP | VP/2 | All harmonics (1/n) | Scanning, Music |
+| **Pulse** | √(D) × VP | D × VP | Depends on duty cycle | Digital, Radar |
+
+**🔍 Fourier Analysis Summary:**
+- **Sine:** Single frequency (pure)
+- **Square:** Odd harmonics (1, 3, 5, ...)
+- **Triangle:** Odd harmonics with 1/n² decay
+- **Sawtooth:** All harmonics with 1/n decay
+- **Pulse:** Complex spectrum based on duty cycle
+
+**💡 Exam Important Points:**
+- Mathematical representations जानना जरूरी
+- RMS और Average values याद रखें
+- Harmonic content समझना important
+- Applications clearly पता होना चाहिए
+- Fourier series basics समझना जरूरी
+- Waveform sketching ability होनी चाहिए
 
 #### F. Ideal/Non-ideal Voltage/Current Sources
 
