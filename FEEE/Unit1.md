@@ -2128,63 +2128,989 @@ A signal that is typically high for a short duration and then low for a longer d
 - Fourier series basics समझना जरूरी
 - Waveform sketching ability होनी चाहिए
 
-#### F. Ideal/Non-ideal Voltage/Current Sources
+---
 
-Sources provide electrical energy to a circuit. Their "ideality" describes how closely they match theoretical behavior.
+### 🔋 F. Ideal/Non-ideal Voltage/Current Sources | आदर्श/अनादर्श वोल्टेज/करंट स्रोत
 
-##### 1. Ideal Voltage Source
+Sources provide electrical energy to a circuit. Their "ideality" describes how closely they match theoretical behavior. Real-world sources हमेशा कुछ limitations होती हैं।
 
-* **Definition:** A theoretical two-terminal device that maintains a constant voltage across its terminals, regardless of the current drawn from it.
-* **Characteristics:**
-    * Zero internal resistance.
-    * Provides infinite current if needed.
-    * Output voltage is perfectly stable.
-* **Symbol:** A circle with '+' and '-' signs, or a circle with an arrow indicating positive direction.
-* **Practicality:** Cannot be perfectly realized in practice, but batteries and regulated power supplies approximate this.
+**Sources क्यों important हैं?**
+- Circuit को energy supply करते हैं
+- System operation के लिए जरूरी
+- Circuit analysis में fundamental elements
+- Power delivery efficiency affect करते हैं
 
-##### 2. Non-ideal (Practical) Voltage Source
+```
+📊 Source Classification:
+         ELECTRICAL SOURCES
+               │
+       ┌───────┴────────┐
+       │                │
+   ┌───▼───┐        ┌───▼───┐
+   │Voltage│        │Current│
+   │Sources│        │Sources│
+   └───┬───┘        └───┬───┘
+       │                │
+  ┌────┼────┐      ┌────┼────┐
+  │    │    │      │    │    │
+Ideal Practical  Ideal Practical
+```
 
-* **Definition:** Represents a real-world voltage source. It has a small internal resistance in series with an ideal voltage source.
-* **Characteristics:**
-    * Output voltage drops as more current is drawn due to the voltage drop across its internal resistance.
-    * $V_{out} = V_{ideal} - I_{load} \times R_{internal}$
-* **Symbol:** An ideal voltage source in series with a resistor.
+---
 
-##### 3. Ideal Current Source
+#### ⚡ 1. Ideal Voltage Source | आदर्श वोल्टेज स्रोत
 
-* **Definition:** A theoretical two-terminal device that provides a constant current through its terminals, regardless of the voltage across its terminals (i.e., the load resistance).
-* **Characteristics:**
-    * Infinite internal resistance.
-    * Can provide any voltage needed to maintain constant current.
-* **Symbol:** A circle with an arrow indicating the direction of current.
-* **Practicality:** Cannot be perfectly realized, but current mirrors or current regulators approximate this.
+**Definition | परिभाषा:**
+A theoretical two-terminal device that maintains a constant voltage across its terminals, regardless of the current drawn from it. यह एक theoretical concept है।
 
-##### 4. Non-ideal (Practical) Current Source
+**Ideal voltage source की विशेषताएं:**
+- Output voltage constant रहता है
+- Current demand के बावजूद voltage change नहीं होता
+- Internal resistance = 0 Ω
+- Infinite current supply capability
+- Perfect voltage regulation
 
-* **Definition:** Represents a real-world current source. It has a large internal resistance in parallel with an ideal current source.
-* **Characteristics:**
-    * The output current will slightly decrease as the load voltage increases, due to some current flowing through its internal resistance.
-    * $I_{out} = I_{ideal} - V_{load} / R_{internal}$
-* **Symbol:** An ideal current source in parallel with a resistor.
+```
+📊 Ideal Voltage Source:
+    
+   ┌─────┐    Internal
+   │  E  │ ←  Resistance = 0
+   └─────┘    
+      │
+      ├──○ +
+      │    V = E (constant)
+      ├──○ -
+      │
+     ═══  (Ground)
 
-#### G. Independent/Dependent Voltage/Current Sources
+Symbol: Circle with + and - signs
+```
 
-These describe how the source's output is determined.
+**📐 Mathematical Model:**
+```
+V_out = E = constant
+R_internal = 0 Ω
+P_supplied = V × I (unlimited)
+```
 
-##### 1. Independent Sources
+**🎯 V-I Characteristic:**
+```
+    Voltage
+       │
+     E ├─────────────── (Horizontal line)
+       │
+     0 ├─────────────── Current
+       │ Can supply any current
+```
 
-* **Definition:** The voltage or current generated by the source is independent of any other voltage or current in the circuit. Their values are constant or vary with time in a predetermined way (e.g., a 5V DC source, or a 10V peak 60Hz AC source).
-* **Symbol:** Circle (as described above for ideal sources).
-* **Examples:** Batteries, wall outlets, function generators.
+**📊 Key Properties:**
+- **Zero internal resistance:** कोई voltage drop नहीं
+- **Constant output:** Load से independent
+- **Unlimited current:** जितनी जरूरत उतनी supply
+- **Perfect regulation:** Load changes का कोई effect नहीं
 
-##### 2. Dependent (Controlled) Sources
+**🎯 Examples (Theoretical):**
+- Ideal battery (no internal resistance)
+- Perfect voltage regulator
+- Infinite power source
+- Mathematical circuit models
 
-* **Definition:** The voltage or current generated by the source depends on another voltage or current elsewhere in the circuit. These are models used to represent the behavior of active devices like transistors and operational amplifiers.
-* **Symbol:** Diamond shape.
-* **Types:**
-    * **Voltage-Controlled Voltage Source (VCVS):** Output voltage is proportional to a controlling voltage. $V_{out} = k \times V_{control}$
-    * **Current-Controlled Voltage Source (CCVS):** Output voltage is proportional to a controlling current. $V_{out} = k \times I_{control}$
-    * **Voltage-Controlled Current Source (VCCS):** Output current is proportional to a controlling voltage. $I_{out} = k \times V_{control}$
-    * **Current-Controlled Current Source (CCCS):** Output current is proportional to a controlling current. $I_{out} = k \times I_{control}$
-        * Where 'k' is a constant of proportionality (gain).
-* **Applications:** Used extensively in modeling transistor circuits, operational amplifier circuits, and other complex active networks in circuit analysis.
+---
+
+#### 🔌 2. Non-ideal (Practical) Voltage Source | व्यावहारिक वोल्टेज स्रोत
+
+**Definition | परिभाषा:**
+Represents a real-world voltage source with internal resistance. Output voltage drops as more current is drawn due to internal losses.
+
+**Practical voltage source की विशेषताएं:**
+- Internal resistance होती है (Rint)
+- Current increase होने पर voltage drop होता है
+- Limited current supply capability
+- Real-world में हमेशा ऐसे ही sources होते हैं
+
+```
+📊 Practical Voltage Source Model:
+    
+   ┌─────┐    ┌─Rint─┐    
+   │  E  │────┤      ├──○ + 
+   └─────┘    └──────┘     
+      │                │   V_out
+      └─────────────────○ -
+                       │
+                      Load
+
+Circuit: E in series with Rint
+```
+
+**📐 Mathematical Model:**
+```
+V_out = E - (I_load × R_int)
+```
+Where:
+- E = Ideal EMF (no-load voltage)
+- I_load = Current drawn by load
+- R_int = Internal resistance
+- V_out = Actual output voltage
+
+**🎯 V-I Characteristic:**
+```
+    Voltage
+       │
+     E ├─╲
+       │  ╲ 
+       │   ╲ Slope = -R_int
+     0 ├────╲─────── Current
+       │     ╲
+       │      └→ I_max = E/R_int
+```
+
+**📊 Important Parameters:**
+
+**1. No-load Voltage:**
+```
+V_no_load = E (when I = 0)
+```
+
+**2. Full-load Voltage:**
+```
+V_full_load = E - (I_max × R_int)
+```
+
+**3. Voltage Regulation:**
+```
+%Regulation = [(V_no_load - V_full_load)/V_full_load] × 100%
+```
+
+**4. Maximum Current:**
+```
+I_max = E/R_int (short circuit current)
+```
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+**1. Car Battery (12V):**
+```
+E = 12.6V (no load)
+R_int = 0.01Ω 
+At 100A: V_out = 12.6 - (100 × 0.01) = 11.6V
+```
+
+**2. USB Power Supply (5V):**
+```
+E = 5.1V
+R_int = 0.1Ω
+At 2A: V_out = 5.1 - (2 × 0.1) = 4.9V
+```
+
+**3. Wall Adapter:**
+```
+Rated: 9V, 1A
+Actual: E = 9.5V, R_int = 0.5Ω
+At full load: V_out = 9.5 - (1 × 0.5) = 9V
+```
+
+**🎯 Applications | अनुप्रयोग:**
+- All real batteries (car, phone, laptop)
+- Power supplies (SMPS, linear)
+- Solar panels (with series resistance)
+- Generators (with winding resistance)
+- Wall adapters और chargers
+
+---
+
+#### ⚡ 3. Ideal Current Source | आदर्श करंट स्रोत
+
+**Definition | परिभाषा:**
+A theoretical two-terminal device that provides a constant current through its terminals, regardless of the voltage across its terminals. यह भी theoretical concept है।
+
+**Ideal current source की विशेषताएं:**
+- Output current constant रहता है
+- Voltage के बावजूद current change नहीं होता
+- Internal resistance = ∞ Ω
+- Unlimited voltage capability
+- Perfect current regulation
+
+```
+📊 Ideal Current Source:
+
+   ┌─────┐
+   │ ──→ │ I = constant
+   │  I  │
+   └─────┘
+      │
+      ├──○ + 
+      │    V = Variable
+      ├──○ - 
+      │
+     ═══  
+
+Symbol: Circle with current arrow
+```
+
+**📐 Mathematical Model:**
+```
+I_out = I = constant
+R_internal = ∞ Ω  
+V_out = Variable (load dependent)
+```
+
+**🎯 I-V Characteristic:**
+```
+    Current
+       │
+     I ├─────────────── (Horizontal line)
+       │
+     0 ├─────────────── Voltage
+       │ Can develop any voltage
+```
+
+**📊 Key Properties:**
+- **Infinite internal resistance:** कोई current leak नहीं
+- **Constant current:** Load से independent
+- **Variable voltage:** Load के according adjust होता है
+- **Perfect current regulation:** Voltage changes का कोई effect नहीं
+
+**🎯 Examples (Theoretical):**
+- Perfect current regulator
+- Infinite impedance source
+- Mathematical circuit models
+- Current mirror (ideal)
+
+---
+
+#### 🔌 4. Non-ideal (Practical) Current Source | व्यावहारिक करंट स्रोत
+
+**Definition | परिभाषा:**
+Represents a real-world current source with finite internal resistance. Output current slightly decreases as load voltage increases.
+
+**Practical current source की विशेषताएं:**
+- Finite internal resistance (Rint)
+- Voltage increase होने पर current decrease होता है
+- Limited voltage compliance range
+- Real current regulators का model
+
+```
+📊 Practical Current Source Model:
+
+   ┌─────┐    
+   │ ──→ ├────┬──○ + 
+   │  I  │    │     
+   └─────┘    ┤     V_out
+              │ Rint    
+              ├────○ - 
+              │     │
+             ═══   Load
+
+Circuit: I in parallel with Rint
+```
+
+**📐 Mathematical Model:**
+```
+I_out = I - (V_load/R_int)
+```
+Where:
+- I = Ideal current source value
+- V_load = Voltage across load
+- R_int = Internal resistance (finite)
+- I_out = Actual output current
+
+**🎯 I-V Characteristic:**
+```
+    Current
+       │
+     I ├─╲
+       │  ╲ 
+       │   ╲ Slope = -1/R_int
+     0 ├────╲─────── Voltage
+       │     ╲
+       │      └→ V_max = I × R_int
+```
+
+**📊 Important Parameters:**
+
+**1. Short-circuit Current:**
+```
+I_short = I (when V = 0)
+```
+
+**2. Open-circuit Voltage:**
+```
+V_open = I × R_int (when I_out = 0)
+```
+
+**3. Current Regulation:**
+```
+%Regulation = [(I_short - I_load)/I_load] × 100%
+```
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+**1. LED Driver (100mA):**
+```
+I = 100mA
+R_int = 10kΩ
+At 2V: I_out = 100 - (2/10000) = 99.98mA
+```
+
+**2. Current Mirror Circuit:**
+```
+I = 1mA
+R_int = 100kΩ  
+Compliance voltage = 1mA × 100kΩ = 100V
+```
+
+**3. Solar Cell (Short-circuit):**
+```
+I_sc = 2A (maximum current)
+Series resistance creates voltage dependency
+```
+
+**🎯 Applications | अनुप्रयोग:**
+- LED current drivers
+- Current mirrors (transistor circuits)
+- Battery chargers (constant current mode)
+- Welding power supplies
+- Current regulators
+
+---
+
+### 📊 Source Comparison Table
+
+| Property | Ideal Voltage | Practical Voltage | Ideal Current | Practical Current |
+|----------|---------------|-------------------|---------------|------------------|
+| **Output** | Constant V | Decreasing V | Constant I | Decreasing I |
+| **Internal R** | 0 Ω | Small R | ∞ Ω | Large R |
+| **Load Effect** | None | V drops with I | None | I drops with V |
+| **Symbol** | ⊕ with ±signs | Same + R_int | ○ with arrow | Same ∥ R_int |
+| **Real Example** | None | Battery, PSU | None | LED driver |
+
+**🔍 Source Transformations:**
+
+**Thévenin to Norton:**
+```
+V_th ←→ I_n = V_th/R_th
+R_th ←→ R_n = R_th
+```
+
+**Norton to Thévenin:**
+```
+I_n ←→ V_th = I_n × R_n  
+R_n ←→ R_th = R_n
+```
+
+**💡 Exam Important Points:**
+- Ideal sources: theoretical concepts
+- Practical sources: include internal resistance
+- Voltage source: series internal resistance
+- Current source: parallel internal resistance
+- Source transformations important हैं
+- Real-world examples याद रखें
+- Mathematical models clearly समझें
+
+---
+
+### 🔄 G. Independent/Dependent Voltage/Current Sources | स्वतंत्र/आश्रित स्रोत
+
+These describe how the source's output is determined - whether it's independent or depends on other circuit variables.
+
+**Source dependency क्यों important है?**
+- Circuit analysis methods को determine करता है
+- Active devices का modeling करने के लिए
+- Complex circuits को simplify करने के लिए
+- Controlled circuits को understand करने के लिए
+
+```
+📊 Source Dependency Classification:
+            ELECTRICAL SOURCES
+                    │
+          ┌─────────┴──────────┐
+          │                    │
+    ┌─────▼─────┐        ┌─────▼─────┐
+    │Independent│        │ Dependent │
+    │  Sources  │        │(Controlled)│
+    └─────┬─────┘        └─────┬─────┘
+          │                    │
+    Fixed Value           Controlled by
+    or Time-varying       Other Variables
+```
+
+---
+
+#### 🔋 1. Independent Sources | स्वतंत्र स्रोत
+
+**Definition | परिभाषा:**
+The voltage or current generated by the source is independent of any other voltage or current in the circuit. Their values are constant or vary with time in a predetermined way.
+
+**Independent sources की विशेषताएं:**
+- Output किसी और circuit variable पर depend नहीं करता
+- अपनी predefined value provide करते हैं
+- External control से independent होते हैं
+- Fixed या time-varying हो सकते हैं
+
+**📊 Types | प्रकार:**
+
+**1. Independent Voltage Source:**
+```
+Symbol: ⊕ (Circle with + and -)
+
+Examples:
+- DC: v(t) = 12V (constant)
+- AC: v(t) = 170sin(ωt) V
+- Pulse: v(t) = square wave
+```
+
+**2. Independent Current Source:**
+```
+Symbol: ○→ (Circle with arrow)
+
+Examples:
+- DC: i(t) = 2A (constant)  
+- AC: i(t) = 5sin(ωt) A
+- Pulse: i(t) = pulse train
+```
+
+**🎯 Characteristics | विशेषताएं:**
+- **Self-contained:** अपने आप में complete
+- **Predictable:** Output predetermined होता है
+- **Circuit independent:** अन्य circuit elements से unaffected
+- **Primary sources:** Energy का main source
+
+```
+📊 Independent Source Examples:
+    
+   DC Voltage        AC Voltage        DC Current
+   ┌─────┐          ┌─────┐           ┌─────┐
+   │ 12V │          │ ~   │           │ ──→ │
+   └─────┘          │230V │           │ 2A  │
+                    └─────┘           └─────┘
+```
+
+**📊 Real-world Examples | वास्तविक उदाहरण:**
+
+**1. Batteries:**
+```
+Car battery: 12V DC
+Phone battery: 3.7V DC
+AA battery: 1.5V DC
+```
+
+**2. AC Mains Supply:**
+```
+India: 230V, 50Hz
+USA: 120V, 60Hz
+Europe: 230V, 50Hz
+```
+
+**3. Function Generators:**
+```
+Sine wave: v(t) = 5sin(2π×1000t) V
+Square wave: ±5V, 1kHz
+```
+
+**4. Solar Panels:**
+```
+I(t) = f(sunlight intensity)
+V(t) = function of load
+```
+
+**🎯 Applications | अनुप्रयोग:**
+- Power supplies (batteries, adapters)
+- Signal generators (test equipment)
+- Utility power (mains electricity)
+- Reference sources (voltage/current standards)
+
+---
+
+#### 🎛️ 2. Dependent (Controlled) Sources | आश्रित (नियंत्रित) स्रोत
+
+**Definition | परिभाषा:**
+The voltage or current generated by the source depends on another voltage or current elsewhere in the circuit. These model the behavior of active devices like transistors and op-amps.
+
+**Dependent sources की विशेषताएं:**
+- Output किसी other circuit variable के proportional होता है
+- Control variable circuit में कहीं और होता है
+- Active devices का modeling करने के लिए use होते हैं
+- Gain या amplification represent करते हैं
+
+**📊 Symbol | चिह्न:**
+```
+Diamond shape (◊) instead of circle (○)
+```
+
+**🎯 Four Types | चार प्रकार:**
+
+---
+
+#### 🔍 Type 1: Voltage-Controlled Voltage Source (VCVS)
+
+**Definition:** Output voltage is proportional to a controlling voltage.
+
+```
+Mathematical Model:
+V_out = μ × V_control
+
+Where μ = Voltage gain (dimensionless)
+```
+
+```
+📊 VCVS Symbol and Circuit:
+    
+   ┌─────────┐         ┌◊─────◊┐
+   │ Control │   ───   │       │ +
+   │ Voltage │    │    │μ×Vcontrol
+   │   V1    │   ───   │       │ -
+   └─────────┘         └◊─────◊┘
+                        
+Symbol: Diamond with μV1 inside
+```
+
+**📊 Examples | उदाहरण:**
+- **Op-amp (ideal):** Vout = A × (V+ - V-)
+- **Voltage amplifier:** Vout = 100 × Vin
+- **Voltage follower:** Vout = 1 × Vin
+
+**Applications:**
+- Operational amplifiers
+- Voltage amplifiers
+- Buffer circuits
+- Instrumentation amplifiers
+
+---
+
+#### 🔍 Type 2: Current-Controlled Voltage Source (CCVS)
+
+**Definition:** Output voltage is proportional to a controlling current.
+
+```
+Mathematical Model:
+V_out = r × I_control
+
+Where r = Transresistance (Ohms)
+```
+
+```
+📊 CCVS Symbol and Circuit:
+    
+   ┌─────────┐         ┌◊─────◊┐
+   │ Control │   ─→    │       │ +
+   │ Current │    │    │r×Icontrol
+   │   I1    │   ─→    │       │ -
+   └─────────┘         └◊─────◊┘
+                        
+Symbol: Diamond with rI1 inside
+```
+
+**📊 Examples | उदाहरण:**
+- **Transistor model:** VCE depends on IB
+- **Current-to-voltage converter:** Vout = R × Iin
+- **Transimpedance amplifier:** Vout = -Rf × Iin
+
+**Applications:**
+- Current-to-voltage converters
+- Transimpedance amplifiers
+- Current sensing circuits
+- Photodiode amplifiers
+
+---
+
+#### 🔍 Type 3: Voltage-Controlled Current Source (VCCS)
+
+**Definition:** Output current is proportional to a controlling voltage.
+
+```
+Mathematical Model:
+I_out = g × V_control
+
+Where g = Transconductance (Siemens, S)
+```
+
+```
+📊 VCCS Symbol and Circuit:
+    
+   ┌─────────┐         ┌◊─────◊┐
+   │ Control │   ───   │   ─→  │
+   │ Voltage │    │    │gm×Vcontrol
+   │   V1    │   ───   │   ─→  │
+   └─────────┘         └◊─────◊┘
+                        
+Symbol: Diamond with arrow and gmV1
+```
+
+**📊 Examples | उदाहरण:**
+- **MOSFET model:** ID = gm × VGS
+- **FET transconductance:** Iout = gm × Vin
+- **Voltage-to-current converter:** Iout = Vin/R
+
+**Applications:**
+- FET/MOSFET modeling
+- Voltage-to-current converters
+- Current sources
+- Transconductance amplifiers
+
+---
+
+#### 🔍 Type 4: Current-Controlled Current Source (CCCS)
+
+**Definition:** Output current is proportional to a controlling current.
+
+```
+Mathematical Model:
+I_out = β × I_control
+
+Where β = Current gain (dimensionless)
+```
+
+```
+📊 CCCS Symbol and Circuit:
+    
+   ┌─────────┐         ┌◊─────◊┐
+   │ Control │   ─→    │   ─→  │
+   │ Current │    │    │β×Icontrol
+   │   I1    │   ─→    │   ─→  │
+   └─────────┘         └◊─────◊┘
+                        
+Symbol: Diamond with arrow and βI1
+```
+
+**📊 Examples | उदाहरण:**
+- **BJT model:** IC = β × IB
+- **Current mirror:** Iout = α × Iin
+- **Current amplifier:** Iout = 10 × Iin
+
+**Applications:**
+- BJT modeling (IC = β × IB)
+- Current mirrors
+- Current amplifiers
+- Current gain stages
+
+---
+
+### 📊 Dependent Sources Summary Table
+
+| Type | Control | Output | Parameter | Units | Example Device |
+|------|---------|---------|-----------|-------|----------------|
+| **VCVS** | Voltage | Voltage | μ (gain) | V/V | Op-amp |
+| **CCVS** | Current | Voltage | r (resistance) | Ω | Current sensor |
+| **VCCS** | Voltage | Current | g (conductance) | S | MOSFET |
+| **CCCS** | Current | Current | β (gain) | A/A | BJT |
+
+**🔍 Circuit Analysis with Dependent Sources:**
+
+**1. Identify Control Variable:**
+- Find the controlling voltage या current
+- Determine its location in circuit
+
+**2. Express Dependent Source:**
+- Write equation relating output to control
+- Use appropriate gain parameter
+
+**3. Apply Circuit Laws:**
+- KVL और KCL apply करें
+- Include dependent source equations
+
+**4. Solve Simultaneously:**
+- All equations को together solve करें
+- Control variables को eliminate करें
+
+**📊 Practical Circuit Example:**
+
+```
+MOSFET Amplifier (VCCS model):
+ID = gm × VGS
+
+Where:
+- VGS = controlling voltage
+- ID = dependent current  
+- gm = transconductance (typical: 1-10 mS)
+```
+
+**💡 Real-world Device Modeling:**
+
+**1. BJT Transistor:**
+```
+IC = β × IB (CCCS)
+Typical β = 50-200
+```
+
+**2. MOSFET:**
+```
+ID = gm × VGS (VCCS)
+Typical gm = 1-10 mS
+```
+
+**3. Op-amp:**
+```
+Vout = A × (V+ - V-) (VCVS)
+Typical A = 10⁵-10⁶
+```
+
+**🎯 Applications in Circuit Analysis:**
+- **Transistor circuits:** Amplifiers, switches
+- **Op-amp circuits:** Filters, comparators
+- **Active filters:** Using dependent sources
+- **Feedback systems:** Control applications
+
+**💡 Exam Important Points:**
+- Independent: Fixed या time-varying values
+- Dependent: Controlled by other variables
+- Four types of dependent sources (VCVS, CCVS, VCCS, CCCS)
+- Diamond symbol for dependent sources
+- Active device modeling में use होते हैं
+- Circuit analysis में equations include करना
+- Real device examples याद रखें
+
+---
+
+## 📚 Unit Summary & Quick Revision | यूनिट सारांश और त्वरित पुनरावलोकन
+
+### 🎯 Component Quick Reference | कॉम्पोनेंट त्वरित संदर्भ
+
+#### Passive Components:
+| Component | Symbol | Formula | Applications |
+|-----------|--------|---------|--------------|
+| **Resistor** | ～～～ | V=IR, P=I²R | Current limiting, voltage division |
+| **Capacitor** | ─ ─ | Q=CV, I=C(dV/dt) | Filtering, timing, energy storage |
+| **Inductor** | ∩∩∩ | Φ=LI, V=L(dI/dt) | Chokes, filters, energy storage |
+
+#### Active Components:
+| Component | Control | Application | Key Parameter |
+|-----------|---------|-------------|---------------|
+| **Diode** | One-way valve | Rectification, switching | Forward drop = 0.7V |
+| **BJT** | Current controlled | Amplification, switching | IC = β×IB |
+| **FET** | Voltage controlled | High input impedance circuits | gm = ΔID/ΔVGS |
+| **CMOS** | Complementary | Digital circuits | Ultra-low power |
+
+---
+
+### 📊 Signal Quick Reference | सिग्नल त्वरित संदर्भ
+
+#### Signal Types:
+| Type | Characteristics | Examples |
+|------|----------------|----------|
+| **DC** | Constant, f=0 Hz | Batteries, logic levels |
+| **AC** | Varying, f≠0 Hz | Mains supply, audio |
+| **Periodic** | Repeats pattern | Sine, square, triangle |
+| **Non-periodic** | No repetition | Speech, noise, pulses |
+
+#### Signal Values (Sine Wave):
+```
+Peak Value    = VP
+RMS Value     = 0.707 × VP  
+Average Value = 0.637 × VP (half-cycle)
+Peak-to-Peak  = 2 × VP
+```
+
+#### Waveform RMS Values:
+| Waveform | RMS Value |
+|----------|-----------|
+| Sine | 0.707 × VP |
+| Square | VP |
+| Triangle | 0.577 × VP |
+| Sawtooth | 0.577 × VP |
+
+---
+
+### 🔋 Source Quick Reference | स्रोत त्वरित संदर्भ
+
+#### Source Types:
+| Source | Internal R | Characteristic | Symbol |
+|--------|------------|----------------|--------|
+| **Ideal Voltage** | 0 Ω | Constant voltage | ⊕ |
+| **Practical Voltage** | Small R | V decreases with I | ⊕ + R |
+| **Ideal Current** | ∞ Ω | Constant current | ○→ |
+| **Practical Current** | Large R | I decreases with V | ○→ ∥ R |
+
+#### Dependent Sources:
+| Type | Control→Output | Parameter | Example |
+|------|----------------|-----------|---------|
+| **VCVS** | Voltage→Voltage | μ (V/V) | Op-amp |
+| **CCVS** | Current→Voltage | r (Ω) | Current sensor |
+| **VCCS** | Voltage→Current | g (S) | MOSFET |
+| **CCCS** | Current→Current | β (A/A) | BJT |
+
+---
+
+## 🎓 Exam Preparation Guide | परीक्षा तैयारी गाइड
+
+### 📝 Important Formulas to Remember | महत्वपूर्ण सूत्र
+
+#### Passive Components:
+```
+Resistor:   V = IR,  P = I²R = V²/R
+Capacitor:  Q = CV,  I = C(dV/dt),  E = ½CV²
+Inductor:   Φ = LI,  V = L(dI/dt),  E = ½LI²
+```
+
+#### Signal Analysis:
+```
+Frequency:      f = 1/T
+Angular freq:   ω = 2πf
+RMS (sine):     VRMS = VP/√2 = 0.707VP
+Average (sine): Vavg = 2VP/π = 0.637VP (half-cycle)
+```
+
+#### Sources:
+```
+Practical Voltage:  Vout = E - I×Rint
+Practical Current:  Iout = I - V/Rint
+Dependent:          Output = k × Control_variable
+```
+
+---
+
+### 💡 Common Exam Questions Types | सामान्य परीक्षा प्रश्न प्रकार
+
+#### 1. Component Identification & Characteristics
+- **Q:** Draw symbols for R, L, C, Diode, BJT
+- **Q:** Compare passive vs active components
+- **Q:** Explain working principle of capacitor
+
+#### 2. Signal Analysis
+- **Q:** Find RMS, Average, Peak values for given waveform
+- **Q:** Classify signals as DC/AC, Periodic/Non-periodic
+- **Q:** Draw voltage/current waveforms
+
+#### 3. Calculations
+- **Q:** Given sine wave VP = 10V, find VRMS and Vavg
+- **Answer:** VRMS = 10×0.707 = 7.07V, Vavg = 10×0.637 = 6.37V
+
+#### 4. Source Analysis
+- **Q:** Distinguish between ideal and practical sources
+- **Q:** Draw equivalent circuits for practical sources
+- **Q:** Explain dependent source types with examples
+
+#### 5. Applications
+- **Q:** Where are inductors used and why?
+- **Q:** Why is CMOS preferred in digital circuits?
+- **Q:** Explain 4-20mA current loop advantage
+
+---
+
+### 🔍 Problem-Solving Strategy | समस्या समाधान रणनीति
+
+#### Step 1: Identify Components
+- Read the problem carefully
+- Identify what type of component/signal is given
+- Note down given values and what to find
+
+#### Step 2: Select Appropriate Formula
+- For passive components: Use basic V, I, P relationships
+- For signals: Use RMS, Average, Peak formulas
+- For sources: Use practical source models
+
+#### Step 3: Substitute and Calculate
+- Put values in formula carefully
+- Check units (V, A, Ω, Hz)
+- Round off to appropriate decimal places
+
+#### Step 4: Verify Answer
+- Check if answer is reasonable
+- Verify units in final answer
+- Cross-check with alternative method if possible
+
+---
+
+### 📋 Important Topics for Short Questions | लघु प्रश्न के लिए महत्वपूर्ण विषय
+
+1. **Define:** Passive component, Active component
+2. **List:** Types of diodes, Types of transistors
+3. **Compare:** BJT vs FET, Ideal vs Practical sources
+4. **Explain:** Working of capacitor, inductor
+5. **State:** Ohm's law, Applications of CMOS
+6. **Draw:** Component symbols, Waveforms
+7. **Calculate:** RMS values, Power dissipation
+
+---
+
+### 📋 Important Topics for Long Questions | दीर्घ प्रश्न के लिए महत्वपूर्ण विषय
+
+1. **Detailed explanation:** Working principle of BJT with characteristics
+2. **Comprehensive comparison:** All types of dependent sources
+3. **Mathematical derivation:** RMS value for sine wave
+4. **Circuit analysis:** Practical voltage source under different loads
+5. **Complete discussion:** Different signal waveforms with Fourier content
+6. **Applications:** Real-world examples of components and their uses
+
+---
+
+### 🎯 Last-Minute Revision Checklist | अंतिम समय पुनरावलोकन सूची
+
+#### ✅ Must Remember:
+- [ ] Component symbols and units
+- [ ] Ohm's law: V = IR
+- [ ] RMS formula: VRMS = 0.707VP (sine wave)
+- [ ] Capacitor: Q = CV, I = C(dV/dt)
+- [ ] Inductor: V = L(dI/dt)
+- [ ] BJT: IC = β×IB
+- [ ] Practical source models
+- [ ] Four types of dependent sources
+
+#### ✅ Key Concepts:
+- [ ] Difference between passive and active
+- [ ] AC vs DC signals
+- [ ] Periodic vs Non-periodic
+- [ ] Ideal vs Practical sources
+- [ ] Independent vs Dependent sources
+- [ ] CMOS advantages
+
+#### ✅ Applications:
+- [ ] Where resistors are used
+- [ ] Capacitor applications
+- [ ] Inductor uses
+- [ ] Diode applications
+- [ ] Transistor uses
+- [ ] Real-world examples
+
+---
+
+### 💭 Exam Tips | परीक्षा सुझाव
+
+1. **Time Management:** 
+   - Short questions: 2-3 minutes each
+   - Long questions: 10-15 minutes each
+   - Keep 5-10 minutes for review
+
+2. **Writing Strategy:**
+   - Start with questions you're most confident about
+   - Draw neat diagrams and circuits
+   - Show all calculation steps clearly
+   - Write units in final answers
+
+3. **Common Mistakes to Avoid:**
+   - Wrong component symbols
+   - Unit errors (V, mV, kV)
+   - RMS vs Peak value confusion
+   - Not showing calculation steps
+
+4. **Diagram Drawing:**
+   - Use ruler for straight lines
+   - Label all components clearly
+   - Include + and - signs for sources
+   - Show current directions with arrows
+
+---
+
+## 🌟 Conclusion | निष्कर्ष
+
+This comprehensive Unit 1 covers the fundamental building blocks of electronics - both components and signals. Understanding these concepts is crucial for:
+
+- **Circuit Analysis:** Foundation for complex circuit problems
+- **Electronics Design:** Component selection and application
+- **Signal Processing:** Understanding how information is carried
+- **Real-world Applications:** From smartphones to power systems
+
+**Key Takeaways | मुख्य बातें:**
+- Passive components store or dissipate energy
+- Active components can amplify and control
+- Signals carry information in voltage/current variations
+- Sources provide energy with practical limitations
+- Mathematics is essential for quantitative analysis
+
+**Success Strategy | सफलता की रणनीति:**
+- समझें concepts thoroughly
+- Practice numerical problems regularly  
+- Draw diagrams accurately
+- Remember real-world applications
+- Revise formulas frequently
+
+Good luck with your exams! 🎓✨
