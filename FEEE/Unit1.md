@@ -530,84 +530,688 @@ Where:
 - Rectifier circuits में use
 - Symbol correctly draw करना
 
-##### 2. Transistors
+#### 🔄 2. Transistors | ट्रांजिस्टर
 
-Transistors are three-terminal semiconductor devices used for amplification or switching electronic signals and electrical power. The two main types are Bipolar Junction Transistors (BJTs) and Field-Effect Transistors (FETs).
+**Definition | परिभाषा:**
+Transistors are three-terminal semiconductor devices used for amplification or switching electronic signals and electrical power. They are the fundamental building blocks of modern electronics.
 
-###### a. Bipolar Junction Transistors (BJTs)
+**Transistor एक ऐसा component है जो:**
+- तीन terminals होते हैं (Three terminals)
+- Signal को amplify कर सकता है
+- Switch की तरह भी काम करता है
+- Modern electronics का heart है
 
-* **Definition:** A BJT is a current-controlled device. A small current at the base terminal controls a larger current flow between the collector and emitter terminals.
-* **Types:** NPN and PNP.
-* **Terminals:** Base (B), Collector (C), Emitter (E).
-* **Working Principle:** Consists of two p-n junctions.
-    * **NPN:** An n-type semiconductor between two p-type regions. Forward bias the base-emitter junction and reverse bias the collector-base junction for active region operation (amplification).
-    * **PNP:** A p-type semiconductor between two n-type regions. Works similarly but with opposite voltage polarities and current directions.
-* **Operating Regions:**
-    * **Cut-off:** Both junctions reverse biased, no current flow (acts as an open switch).
-    * **Active:** Base-emitter forward biased, collector-base reverse biased; used for amplification.
-    * **Saturation:** Both junctions forward biased, maximum current flow (acts as a closed switch).
-* **Current Relationships (NPN in active region):**
-    * $I_E = I_B + I_C$
-    * $I_C = \beta I_B$ (where $\beta$ is the current gain, typically 50-200)
-    * $I_C = \alpha I_E$ (where $\alpha \approx 0.95 - 0.99$)
-* **Applications:** Amplifiers, switches, oscillators, digital logic gates.
+**🎯 Types | प्रकार:**
+1. **BJT (Bipolar Junction Transistor)**
+2. **FET (Field Effect Transistor)**
 
-##### 3. FET (Field-Effect Transistors)
-
-* **Definition:** FETs are voltage-controlled devices. A voltage applied to the gate terminal controls the current flow between the source and drain terminals. They have high input impedance, making them suitable for voltage amplification.
-* **Types:**
-    * **JFET (Junction Field-Effect Transistor):** Uses a reverse-biased p-n junction for the gate.
-    * **MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor):** Uses an insulated gate, leading to even higher input impedance.
-
-##### 4. MOS and CMOS
-
-###### a. MOS (Metal-Oxide-Semiconductor)
-
-* **Refers to:** The fundamental structure of MOSFETs. It describes the layers: Metal (gate electrode), Oxide (insulator, typically silicon dioxide), and Semiconductor (silicon substrate).
-* **MOSFETs** are the most widely used transistors in digital and analog circuits today.
-* **Types:**
-    * **nMOS (n-channel MOSFET):** Current flows through an n-type channel. Requires a positive gate voltage to turn ON (for enhancement mode).
-    * **pMOS (p-channel MOSFET):** Current flows through a p-type channel. Requires a negative gate voltage to turn ON (for enhancement mode).
-* **Working Principle (nMOS Enhancement Mode):** Applying a positive voltage to the gate attracts electrons to the region under the gate, forming a conductive n-channel between the source and drain, allowing current to flow. No current flows when gate voltage is zero or negative.
-* **Advantages:** High input impedance, good for scaling down (smaller size), low power consumption when static (especially CMOS).
-* **Applications:** Amplifiers, switches, digital logic gates (especially in microprocessors, memory chips).
-
-###### b. CMOS (Complementary Metal-Oxide-Semiconductor)
-
-* **Definition:** A technology that uses complementary pairs of nMOS and pMOS transistors to implement logic gates and other digital circuits.
-* **Working Principle:** In a CMOS circuit, when an nMOS transistor is ON, the corresponding pMOS transistor is OFF, and vice-versa. This ensures that there is never a direct path from the power supply to ground through both transistors at the same time in static operation.
-* **Advantages:**
-    * **Extremely Low Static Power Dissipation:** Only draws significant current during switching transitions. This is a major reason for its dominance in modern integrated circuits.
-    * High noise immunity.
-    * Good scalability.
-* **Applications:** Virtually all modern digital integrated circuits, including microprocessors, microcontrollers, memory (RAM, ROM), digital signal processors (DSPs). It's the backbone of digital electronics.
+```
+📊 Transistor Family Tree:
+                    TRANSISTORS
+                        │
+            ┌───────────┴────────────┐
+            │                        │
+        ┌───▼───┐                ┌───▼───┐
+        │  BJT  │                │  FET  │
+        └───┬───┘                └───┬───┘
+            │                        │
+      ┌─────┴─────┐            ┌─────┴─────┐
+      │           │            │           │
+   ┌──▼──┐     ┌──▼──┐      ┌──▼──┐     ┌──▼──┐
+   │ NPN │     │ PNP │      │JFET │     │MOSFET│
+   └─────┘     └─────┘      └─────┘     └─────┘
+```
 
 ---
 
-### II. Signals
+##### 🔋 a. Bipolar Junction Transistors (BJTs)
+
+**Definition | परिभाषा:**
+A BJT is a current-controlled device. A small current at the base terminal controls a larger current flow between the collector and emitter terminals.
+
+**BJT की विशेषताएं:**
+- Current controlled device है
+- Base current से collector-emitter current control होता है
+- दो P-N junctions होते हैं
+- High current gain मिलता है
+
+**Terminals | टर्मिनल्स:**
+- **Base (B)** - Control terminal
+- **Collector (C)** - Output terminal (positive)
+- **Emitter (E)** - Output terminal (negative)
+
+**🔬 Types | प्रकार:**
+
+**1. NPN Transistor:**
+```
+   Collector (C)
+        │
+        ▼
+   ─────┬─────
+        │ \
+        │  >  (Arrow pointing OUT)
+        │ /
+   ─────┬─────
+        │
+        ▼
+   Emitter (E)
+        │
+   Base (B)
+```
+
+**2. PNP Transistor:**
+```
+   Collector (C)
+        │
+        ▼
+   ─────┬─────
+        │ \
+        │  <  (Arrow pointing IN)
+        │ /
+   ─────┬─────
+        │
+        ▼
+   Emitter (E)
+        │
+   Base (B)
+```
+
+**🎯 Operating Regions | संचालन क्षेत्र:**
+
+**1. Cut-off Region:**
+- Both junctions reverse biased
+- No current flow (IB = IC = IE = 0)
+- Transistor acts as open switch
+
+**2. Active Region (Amplification):**
+- Base-Emitter: Forward biased
+- Collector-Base: Reverse biased
+- Used for amplification
+- Linear operation
+
+**3. Saturation Region:**
+- Both junctions forward biased
+- Maximum current flow
+- Transistor acts as closed switch
+
+```
+📊 Operating Regions:
+       IC
+        │     Active Region
+        │    ╱
+        │   ╱ (Amplification)
+        │  ╱
+        │ ╱
+   ─────┼╱─────────────── VCE
+  Cut-off│    Saturation
+        │   (Switch ON)
+   (Switch OFF)
+```
+
+**📐 Important Equations | महत्वपूर्ण समीकरण:**
+
+**Current Relationships:**
+```
+IE = IB + IC        (Kirchhoff's Current Law)
+IC = β × IB         (β = Current gain, typically 50-200)
+IC = α × IE         (α ≈ 0.95-0.99)
+```
+
+**Relationship between α and β:**
+```
+β = α/(1-α)
+α = β/(β+1)
+```
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+**1. Common Emitter Amplifier:**
+- Input: Base-Emitter
+- Output: Collector-Emitter
+- High voltage gain
+- Phase inversion होता है
+
+**2. Switching Circuit:**
+- Cut-off: Switch OFF
+- Saturation: Switch ON
+- Digital logic में use
+
+**3. Current Mirror:**
+- Constant current source बनाने के लिए
+- IC circuits में widely used
+
+**🎯 Applications | अनुप्रयोग:**
+- Amplifiers (audio, RF, video)
+- Switches (digital circuits)
+- Oscillators (signal generation)
+- Voltage regulators
+- Current sources
+- Logic gates (DTL, RTL circuits)
+
+**💡 Exam Important Points:**
+- IE = IB + IC (KCL)
+- IC = β × IB (current gain)
+- Three operating regions
+- NPN vs PNP differences
+- Common configurations (CE, CB, CC)
+- Switch और amplifier applications
+
+#### ⚡ 3. FET (Field-Effect Transistors) | फील्ड इफेक्ट ट्रांजिस्टर
+
+**Definition | परिभाषा:**
+FETs are voltage-controlled devices. A voltage applied to the gate terminal controls the current flow between the source and drain terminals. They have high input impedance.
+
+**FET की विशेषताएं:**
+- Voltage controlled device है
+- Gate voltage से drain-source current control होता है  
+- बहुत high input impedance होता है
+- Unipolar device (एक type के charge carriers)
+
+**Terminals | टर्मिनल्स:**
+- **Gate (G)** - Control terminal (input)
+- **Drain (D)** - Output terminal (positive)
+- **Source (S)** - Output terminal (negative)
+
+**🔬 Types | प्रकार:**
+
+**1. JFET (Junction Field-Effect Transistor):**
+- P-N junction के साथ gate
+- Depletion mode operation
+- Gate reverse biased रखते हैं
+
+```
+JFET Structure:
+   Drain (D)
+       │
+   ┌───▼───┐
+   │   N   │ ← Channel
+Gate│←─────→│Gate
+   │   │   │
+   └───▼───┘
+   Source (S)
+```
+
+**2. MOSFET (Metal-Oxide-Semiconductor FET):**
+- Insulated gate (SiO2 layer)
+- Enhancement या Depletion mode
+- सबसे widely used
+
+```
+MOSFET Structure:
+   Gate (G)
+       │
+   ┌───▼───┐ ← Oxide layer
+   │   │   │
+Drain│   │   │Source
+   │ Channel │
+   └───────┘
+   Substrate
+```
+
+**🎯 MOSFET Types:**
+
+**1. Enhancement Mode:**
+- Normally OFF (no channel)
+- Positive gate voltage creates channel
+- Most common type
+
+**2. Depletion Mode:**
+- Normally ON (channel exists)
+- Negative gate voltage depletes channel
+
+**N-Channel vs P-Channel:**
+- **nMOS:** N-channel, positive gate voltage for ON
+- **pMOS:** P-channel, negative gate voltage for ON
+
+**📐 Important Characteristics:**
+
+**1. Transconductance (gm):**
+```
+gm = ΔID/ΔVGS
+```
+
+**2. Drain Current (Active region):**
+```
+ID = K(VGS - VTH)²
+```
+Where:
+- K = Transconductance parameter
+- VGS = Gate-Source voltage
+- VTH = Threshold voltage
+
+**3. Input Impedance:**
+- JFET: ~10¹² Ω
+- MOSFET: ~10¹⁴ Ω (practically infinite)
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+**1. Voltage Amplifier:**
+- High input impedance
+- Good voltage gain
+- Low input current
+
+**2. Digital Switch:**
+- ON/OFF operation
+- Low power consumption
+- Fast switching speed
+
+**3. Current Source:**
+- Constant current applications
+- Active loads में use
+
+**🎯 Applications | अनुप्रयोग:**
+- Amplifiers (high input impedance needed)
+- Digital switches (CMOS logic)
+- Voltage followers/buffers
+- Oscillators और timers
+- Power switching (MOSFETs)
+- RF applications (low noise)
+
+**💡 Advantages over BJTs:**
+- Higher input impedance
+- Lower power consumption
+- Better thermal stability
+- Easier to manufacture (ICs में)
+- No input current needed
+
+**💡 Exam Important Points:**
+- Voltage controlled device
+- High input impedance
+- gm = ΔID/ΔVGS
+- Enhancement vs Depletion mode
+- nMOS vs pMOS operation
+- JFET vs MOSFET differences
+
+#### 💻 4. MOS and CMOS | एमओएस और सीएमओएस
+
+---
+
+##### 🔧 a. MOS (Metal-Oxide-Semiconductor)
+
+**Definition | परिभाषा:**
+MOS refers to the fundamental structure of MOSFETs. It describes the layers: Metal (gate electrode), Oxide (insulator, typically silicon dioxide), and Semiconductor (silicon substrate).
+
+**MOS structure में तीन layers होती हैं:**
+- **Metal:** Gate electrode (aluminum या polysilicon)
+- **Oxide:** Insulator layer (SiO2 - silicon dioxide)
+- **Semiconductor:** Silicon substrate (P-type या N-type)
+
+```
+📊 MOS Structure:
+   ┌─────────────────┐ ← Metal Gate
+   │                 │
+   ├─────────────────┤ ← Oxide (SiO2)
+   │                 │
+   │   Semiconductor │ ← Silicon Substrate
+   │    (P or N)     │
+   └─────────────────┘
+```
+
+**🎯 Types | प्रकार:**
+
+**1. nMOS (N-channel MOSFET):**
+- N-type channel for current flow
+- P-type substrate
+- Positive gate voltage for ON state
+- Electrons are majority carriers
+
+**2. pMOS (P-channel MOSFET):**
+- P-type channel for current flow
+- N-type substrate  
+- Negative gate voltage for ON state
+- Holes are majority carriers
+
+**📐 Working Principle (nMOS Enhancement Mode):**
+
+**OFF State (VGS = 0):**
+- No channel exists
+- Very high resistance between drain-source
+- Practically no current flow
+
+**ON State (VGS > VTH):**
+- Positive gate voltage attracts electrons
+- N-channel forms under gate oxide
+- Low resistance path between drain-source
+- Current flows from drain to source
+
+```
+📊 nMOS Operation:
+         Gate
+           │ +VGS
+   ┌───────▼───────┐
+Drain│  ─ ─ ─ ─ ─  │Source
+   │  Electron    │
+   │  Channel     │
+   └──────────────┘
+     P-Substrate
+```
+
+**🎯 Advantages | फायदे:**
+- Very high input impedance (10¹⁴ Ω)
+- Low power consumption (static)
+- Good for scaling down (smaller sizes)
+- Fast switching speeds
+- Easy integration in ICs
+
+**📊 Applications | अनुप्रयोग:**
+- Digital logic circuits
+- Analog amplifiers
+- Memory devices (RAM, ROM)
+- Microprocessors
+- Power electronics
+
+---
+
+##### ⚡ b. CMOS (Complementary Metal-Oxide-Semiconductor)
+
+**Definition | परिभाषा:**
+CMOS technology uses complementary pairs of nMOS and pMOS transistors to implement logic gates and other digital circuits. यह modern digital electronics का backbone है।
+
+**CMOS की विशेषताएं:**
+- nMOS और pMOS दोनों का use करता है
+- Complementary operation (एक ON तो दूसरा OFF)
+- Static power consumption बहुत कम
+- Modern computers का foundation
+
+**🔬 Working Principle | कार्य सिद्धांत:**
+
+CMOS circuit में जब nMOS ON होता है, तो pMOS OFF होता है और vice versa। इससे power supply से ground तक कभी direct path नहीं बनता (static state में)।
+
+```
+📊 CMOS Inverter:
+    VDD (+5V)
+      │
+   ┌──▼──┐ pMOS (P-channel)
+   │     │
+Input──┼─────── Output
+   │     │
+   └──▼──┘ nMOS (N-channel)
+      │
+     GND
+```
+
+**Truth Table (Inverter):**
+| Input | pMOS | nMOS | Output |
+|-------|------|------|--------|
+|   0   |  ON  | OFF  |   1    |
+|   1   | OFF  |  ON  |   0    |
+
+**🎯 CMOS Advantages | फायदे:**
+
+**1. Extremely Low Static Power:**
+- Static current ≈ 0 (except leakage)
+- Power केवल switching के time consume होती है
+- Battery life बढ़ती है
+
+**2. High Noise Immunity:**
+- Large noise margins
+- Reliable operation in noisy environments
+
+**3. Full Rail-to-Rail Swing:**
+- Output 0V (logic 0) से VDD (logic 1) तक swing करता है
+- Clean digital signals
+
+**4. Good Scalability:**
+- Smaller geometries में easily manufacture होता है
+- Moore's law को support करता है
+
+**📊 Power Consumption:**
+```
+P_total = P_static + P_dynamic
+P_static ≈ 0 (leakage current only)
+P_dynamic = α × CL × VDD² × f
+```
+Where:
+- α = Activity factor
+- CL = Load capacitance
+- VDD = Supply voltage
+- f = Clock frequency
+
+**🎯 Applications | अनुप्रयोग:**
+- **Microprocessors:** Intel, AMD processors
+- **Memory:** RAM, ROM, Flash memory
+- **Digital Signal Processors (DSPs)**
+- **Microcontrollers:** Arduino, ARM processors
+- **Application Specific ICs (ASICs)**
+- **System-on-Chip (SoC):** Smartphones, tablets
+
+**📊 CMOS Logic Gates:**
+
+**NAND Gate:**
+```
+    VDD
+     │
+  ┌──▼──┐ pMOS parallel
+A──│     │──┐
+  └─────┘  │
+  ┌──▼──┐  │ Output
+B──│     │──┘
+  └─────┘ pMOS
+     │
+  ┌──▼──┐ nMOS series
+A──│     │
+  └──▼──┘
+  ┌─────┐
+B──│     │
+  └──▼──┘
+    GND
+```
+
+**💡 Exam Important Points:**
+- CMOS = nMOS + pMOS complementary pairs
+- Static power consumption ≈ 0
+- High noise immunity
+- Full rail-to-rail output swing
+- Modern digital electronics का backbone
+- Inverter का operation समझना जरूरी
+- Power consumption formula
+- Advantages over other technologies
+
+---
+
+## 📡 II. Signals | सिग्नल्स
+
+### 📚 Signal Introduction | सिग्नल परिचय
 
 Electrical signals are waveforms that convey information. Understanding their characteristics is crucial for analyzing and designing electronic circuits.
 
-#### A. DC/AC Signals
+**Signal क्या है?**
+- Information carry करने वाला electrical quantity
+- Voltage या current के form में हो सकता है
+- Time के साथ change होता रहता है
+- Communication और control systems का basis है
 
-##### 1. DC (Direct Current) Signals
+**🔑 Why Study Signals? | सिग्नल्स क्यों पढ़ें?**
+- Circuit analysis के लिए जरूरी
+- Communication systems समझने के लिए
+- Signal processing में applications
+- Real-world systems में signals everywhere हैं
 
-* **Definition:** A signal whose magnitude and direction remain constant over time.
-* **Characteristics:**
-    * Constant voltage (e.g., from a battery).
-    * Constant current.
-    * Frequency is 0 Hz.
-* **Examples:** Battery voltage, output of a DC power supply.
-* **Waveform:** A straight horizontal line.
+```
+📊 Signal Classification Overview:
+                    SIGNALS
+                       │
+           ┌───────────┴────────────┐
+           │                        │
+       ┌───▼───┐                ┌───▼───┐
+       │ By    │                │ By    │
+       │Nature │                │Pattern│
+       └───┬───┘                └───┬───┘
+           │                        │
+     ┌─────┴─────┐            ┌─────┴─────┐
+     │           │            │           │
+  ┌──▼──┐     ┌──▼──┐      ┌──▼──┐     ┌──▼──┐
+  │ DC  │     │ AC  │      │Periodic│ │Non-  │
+  └─────┘     └─────┘      └─────┘  │periodic│
+                                    └────────┘
+```
 
-##### 2. AC (Alternating Current) Signals
+### ⚡ A. DC/AC Signals | डीसी/एसी सिग्नल्स
 
-* **Definition:** A signal whose magnitude and direction vary periodically with time.
-* **Characteristics:**
-    * Periodically reverses direction.
-    * Has a non-zero frequency.
-* **Examples:** Household mains electricity, radio waves, audio signals.
-* **Waveform:** Often sinusoidal, but can also be square, triangular, sawtooth, etc.
+---
+
+#### 🔋 1. DC (Direct Current) Signals | डीसी सिग्नल्स
+
+**Definition | परिभाषा:**
+A signal whose magnitude and direction remain constant over time. DC signals have zero frequency.
+
+**DC signal की विशेषताएं:**
+- Magnitude constant रहता है
+- Direction change नहीं होती
+- Frequency = 0 Hz
+- Time के साथ value same रहती है
+
+```
+📊 DC Signal Waveform:
+    Voltage
+       │
+    5V ├─────────────────────
+       │
+    0V ├─────────────────────── Time
+       │
+   -5V ├─────────────────────
+       └─────────────────────
+```
+
+**🎯 Characteristics | विशेषताएं:**
+- **Constant voltage:** Battery से मिलती है constant voltage
+- **Constant current:** Magnitude और direction fixed
+- **Zero frequency:** कोई oscillation नहीं होती
+- **Time independent:** f(t) = constant
+
+**📊 Examples | उदाहरण:**
+- **Battery voltage:** 1.5V, 9V, 12V batteries
+- **DC power supply output:** Computer SMPS output
+- **Solar panel output:** Direct sunlight में constant DC
+- **DC motor supply:** Constant speed के लिए
+
+**🎯 Mathematical Representation:**
+```
+v(t) = V_DC = constant
+i(t) = I_DC = constant
+```
+
+**Applications | अनुप्रयोग:**
+- Electronic devices (laptops, phones)
+- LED lighting systems
+- Battery powered devices
+- DC motors और fans
+- Digital circuits (logic levels)
+
+---
+
+#### 🌊 2. AC (Alternating Current) Signals | एसी सिग्नल्स
+
+**Definition | परिभाषा:**
+A signal whose magnitude and direction vary periodically with time. AC signals have non-zero frequency and alternate between positive and negative values.
+
+**AC signal की विशेषताएं:**
+- Magnitude time के साथ change होता है
+- Direction periodically reverse होती है
+- Non-zero frequency होती है
+- Sinusoidal या other periodic waveforms
+
+```
+📊 AC Signal Waveform (Sine Wave):
+    Voltage
+       │      ╭─╮
+    +VP├─────╱───╲─────╱───╲─── Time
+       │    ╱     ╲   ╱     ╲
+     0 ├───╱───────╲─╱───────╲─
+       │          ╱ ╱         ╲
+   -VP ├─────────╱─╱───────────╲─
+       └──────────────────────────
+             T (Period)
+```
+
+**🎯 Characteristics | विशेषताएं:**
+- **Periodically varying:** Regular intervals में repeat होता है
+- **Bidirectional:** Positive और negative values लेता है
+- **Non-zero frequency:** f = 1/T Hz
+- **RMS value:** Effective value के लिए important
+
+**📐 Mathematical Representation:**
+```
+v(t) = VP sin(ωt + φ)
+```
+Where:
+- VP = Peak voltage (amplitude)
+- ω = Angular frequency = 2πf
+- φ = Phase angle
+- t = Time
+
+**🎯 Parameters | पैरामीटर:**
+
+**1. Peak Value (VP):**
+- Maximum value from zero level
+- Amplitude of the waveform
+
+**2. Peak-to-Peak Value (VPP):**
+- Difference between +VP and -VP
+- VPP = 2VP (for symmetrical waveforms)
+
+**3. Period (T):**
+- Time for one complete cycle
+- Measured in seconds
+
+**4. Frequency (f):**
+- Number of cycles per second
+- f = 1/T Hz
+
+**5. Angular Frequency (ω):**
+- ω = 2πf rad/second
+
+**📊 Types of AC Waveforms:**
+
+**1. Sinusoidal (सबसे common):**
+- Smooth oscillation
+- Pure tone in audio
+- Power distribution में use
+
+**2. Square Wave:**
+- Digital signals में common
+- Rapid switching between two levels
+
+**3. Triangular Wave:**
+- Linear rise और fall
+- Function generators में
+
+**4. Sawtooth Wave:**
+- Ramp-like waveform
+- Oscilloscope sweep signals
+
+**📊 Examples | उदाहरण:**
+- **Household AC supply:** 230V, 50Hz (India)
+- **Audio signals:** Music, speech
+- **Radio waves:** AM/FM broadcasting
+- **Power transmission:** High voltage AC
+
+**🎯 Applications | अनुप्रयोग:**
+- Power transmission और distribution
+- Audio systems (music, speech)
+- Radio frequency communication
+- Motor drives (AC motors)
+- Transformers (voltage conversion)
+
+**💡 DC vs AC Comparison:**
+
+| Parameter | DC | AC |
+|-----------|----|----|
+| **Frequency** | 0 Hz | Non-zero |
+| **Direction** | Constant | Alternating |
+| **Transmission** | High losses | Low losses |
+| **Transformation** | Difficult | Easy (transformers) |
+| **Storage** | Easy (batteries) | Difficult |
+| **Examples** | Batteries, Solar | Mains supply, Audio |
+
+**💡 Exam Important Points:**
+- DC frequency = 0 Hz
+- AC frequency ≠ 0 Hz
+- Sine wave mathematical representation
+- Peak, Peak-to-Peak values
+- Period और frequency relationship
+- Different AC waveform types
+- Real-world applications
 
 #### B. Voltage/Current Signals
 
