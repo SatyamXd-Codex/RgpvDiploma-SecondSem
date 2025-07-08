@@ -1,111 +1,534 @@
+# 🔌 UNIT I: Overview of Electronic Components & Signals
+## इलेक्ट्रॉनिक कॉम्पोनेंट्स और सिग्नल्स का ओवरव्यू
 
+### 📚 Unit Introduction | यूनिट परिचय
 
-## UNIT I: Overview of Electronic Components & Signals
+This comprehensive unit introduces the fundamental concepts in electronics, covering both the basic building blocks (components) and the nature of electrical quantities (signals). Ye unit electronics ki foundation hai - components aur signals ko detail mein samjhayenge.
 
-This unit introduces fundamental concepts in electronics, covering both the basic building blocks (components) and the nature of electrical quantities (signals).
+**यह यूनिट क्यों महत्वपूर्ण है? (Why is this unit important?)**
+- Electronics के basic building blocks समझने के लिए
+- Circuit analysis ki foundation बनाने के लिए
+- Practical applications में components कैसे काम करते हैं
+- Exam preparation के लिए core concepts
 
-### I. Passive & Active Components
+### 🎯 Learning Objectives | सीखने के उद्देश्य
+
+After completing this unit, students will be able to:
+- Classify and understand passive vs active components
+- Analyze different types of electrical signals
+- Calculate average, RMS, and peak values
+- Understand ideal and practical sources
+- Apply component knowledge in circuit analysis
+
+**इस यूनिट के बाद आप जान जाएंगे:**
+- Passive aur active components में क्या अंतर है
+- Different signals कैसे काम करते हैं
+- Calculations कैसे करते हैं
+- Real-world applications कहाँ मिलते हैं
+
+---
+
+## 🧩 I. Passive & Active Components | पैसिव और एक्टिव कॉम्पोनेंट्स
 
 Electronic components are broadly classified into two categories based on their ability to control or generate power.
 
-#### A. Passive Components
+**Components का classification क्यों जरूरी है?**
+- Circuit design में proper selection के लिए
+- Power requirements समझने के लिए  
+- Cost और efficiency optimize करने के लिए
 
+```
+📊 Component Classification:
+    ┌─────────────────────────────────────┐
+    │        Electronic Components        │
+    └─────────────┬───────────────────────┘
+                  │
+        ┌─────────┴─────────┐
+        │                   │
+   ┌────▼────┐       ┌─────▼─────┐
+   │ PASSIVE │       │  ACTIVE   │
+   └─────────┘       └───────────┘
+        │                   │
+   ┌────▼────┐       ┌─────▼─────┐
+   │R, L, C  │       │Diode,Transistor│
+   └─────────┘       └───────────┘
+```
+
+### 🔋 A. Passive Components | पैसिव कॉम्पोनेंट्स
+
+**Definition | परिभाषा:**
 Passive components are those that do not require an external power source to operate and cannot amplify or generate a signal. They either dissipate, store, or filter electrical energy.
 
-##### 1. Resistances (Resistors)
+**Passive components वे होते हैं जो:**
+- बाहरी power source की जरूरत नहीं होती
+- Signal को amplify नहीं कर सकते
+- केवल energy को dissipate, store या filter करते हैं
 
-* **Definition:** A resistor is a two-terminal passive electronic component that opposes the flow of electric current. It dissipates electrical energy as heat.
-* **Symbol:** Usually a zig-zag line.
-* **Unit:** Ohm ($\Omega$).
-* **Working Principle:** Based on Ohm's Law. When a voltage is applied across a resistor, current flows through it, and energy is lost as heat due to collisions between electrons and atoms in the material.
-* **Formula (Ohm's Law):**
-    * $V = I \times R$
-        * Where:
-            * $V$ = Voltage across the resistor (Volts, V)
-            * $I$ = Current flowing through the resistor (Amperes, A)
-            * $R$ = Resistance (Ohms, $\Omega$)
-* **Power Dissipation:**
-    * $P = V \times I$
-    * Substituting $V = I \times R$: $P = I^2 \times R$
-    * Substituting $I = V/R$: $P = V^2 / R$
-        * Where $P$ is power in Watts (W).
-* **Derivation of Ohm's Law (Conceptual):** Ohm's Law is an empirical relationship. It states that for many materials (ohmic materials) at a constant temperature, the current flowing through them is directly proportional to the voltage applied across them. The constant of proportionality is the resistance.
-* **Applications:** Current limiting, voltage division, pull-up/pull-down resistors in digital circuits, timing circuits (in conjunction with capacitors).
+**🔑 Key Characteristics:**
+- No external power needed
+- Cannot provide gain
+- Linear behavior (mostly)
+- Energy storage or dissipation
 
-##### 2. Capacitors
+**मुख्य विशेषताएं:**
+- कोई external power नहीं चाहिए
+- Gain प्रदान नहीं कर सकते
+- ज्यादातर linear behavior
+- Energy store या dissipate करते हैं
 
-* **Definition:** A capacitor is a two-terminal passive electronic component that stores electrical energy in an electric field. It consists of two conductive plates separated by a dielectric (insulating) material.
-* **Symbol:** Two parallel lines.
-* **Unit:** Farad (F).
-* **Working Principle:** When a voltage is applied across a capacitor, charge accumulates on the plates, creating an electric field between them. The capacitor stores this charge and thus energy. It opposes sudden changes in voltage.
-* **Formula (Charge Storage):**
-    * $Q = C \times V$
-        * Where:
-            * $Q$ = Charge stored (Coulombs, C)
-            * $C$ = Capacitance (Farads, F)
-            * $V$ = Voltage across the capacitor (Volts, V)
-* **Current-Voltage Relationship (in AC circuits):**
-    * $I_c = C \frac{dV_c}{dt}$
-        * This shows that the current through a capacitor is proportional to the rate of change of voltage across it. If the voltage is constant (DC), the current is zero (capacitor acts as an open circuit once charged).
-* **Energy Stored:**
-    * $E = \frac{1}{2} C V^2$
-        * Where $E$ is energy in Joules (J).
-* **Derivation (Current-Voltage Relationship):**
-    * We know $Q = C \times V$.
-    * Current is the rate of change of charge: $I = \frac{dQ}{dt}$.
-    * Substitute $Q$: $I = \frac{d(CV)}{dt}$.
-    * Assuming $C$ is constant: $I = C \frac{dV}{dt}$.
-* **Applications:** Filtering (smoothing power supply ripples), coupling/decoupling signals, timing circuits, energy storage, frequency selection (in tuned circuits).
+#### 🎯 1. Resistances (Resistors) | प्रतिरोध (रेसिस्टर)
 
-##### 3. Inductors
+**Definition | परिभाषा:**
+A resistor is a two-terminal passive electronic component that opposes the flow of electric current. It dissipates electrical energy as heat.
 
-* **Definition:** An inductor is a two-terminal passive electronic component that stores energy in a magnetic field when electric current flows through it. It typically consists of a coil of wire.
-* **Symbol:** A coil/helix.
-* **Unit:** Henry (H).
-* **Working Principle:** When current flows through an inductor, it creates a magnetic field. Any change in this current causes a change in the magnetic field, which in turn induces an electromotive force (EMF) that opposes the change in current (Lenz's Law). It opposes sudden changes in current.
-* **Formula (Magnetic Flux Linkage):**
-    * $\Phi = L \times I$
-        * Where:
-            * $\Phi$ = Magnetic flux linkage (Weber-turns)
-            * $L$ = Inductance (Henries, H)
-            * $I$ = Current flowing through the inductor (Amperes, A)
-* **Voltage-Current Relationship (in AC circuits):**
-    * $V_L = L \frac{dI_L}{dt}$
-        * This shows that the voltage across an inductor is proportional to the rate of change of current through it. If the current is constant (DC), the voltage is zero (inductor acts as a short circuit).
-* **Energy Stored:**
-    * $E = \frac{1}{2} L I^2$
-        * Where $E$ is energy in Joules (J).
-* **Derivation (Voltage-Current Relationship):**
-    * According to Faraday's Law of Induction, the induced EMF is $V = -\frac{d\Phi}{dt}$.
-    * We know $\Phi = L \times I$.
-    * Substitute $\Phi$: $V = -\frac{d(LI)}{dt}$.
-    * Assuming $L$ is constant: $V = -L \frac{dI}{dt}$. The negative sign indicates opposition to the change in current. In circuit analysis, we often consider the magnitude of the voltage drop across it, so $V_L = L \frac{dI_L}{dt}$.
-* **Applications:** Filters, chokes (to block AC while allowing DC), energy storage (in switching power supplies), resonant circuits, transformers.
+**Resistor एक ऐसा component है जो:**
+- Current के flow को oppose करता है
+- Electrical energy को heat में convert करता है
+- Circuit में current को control करता है
 
-#### B. Active Components
+**Symbol | चिह्न:** 
+```
+   ----/\/\/\/\----  (Zig-zag line)
+   या
+   ----[    ]----    (Rectangle)
+```
 
+**Unit | इकाई:** Ohm (Ω) - ओम
+
+**🔬 Working Principle | कार्य सिद्धांत:**
+
+Based on Ohm's Law. When voltage is applied across a resistor, current flows through it, and energy is lost as heat due to collisions between electrons and atoms in the material.
+
+**काम कैसे करता है:**
+- Voltage apply करने पर current flow होता है
+- Electrons और atoms के बीच collision होती है
+- Energy heat के रूप में निकलती है
+- यही resistance का principle है
+
+**📐 Fundamental Formulas | मूल सूत्र:**
+
+**Ohm's Law | ओम का नियम:**
+```
+V = I × R
+```
+Where | जहाँ:
+- V = Voltage across resistor (Volts) | रेसिस्टर के across voltage
+- I = Current through resistor (Amperes) | रेसिस्टर से होकर बहने वाला current  
+- R = Resistance (Ohms) | प्रतिरोध
+
+**Power Dissipation | शक्ति अपव्यय:**
+```
+P = V × I = I² × R = V²/R
+```
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+1. **LED Current Limiting:**
+   - अगर LED को 20mA current चाहिए और supply 5V है
+   - LED का forward voltage 2V है
+   - R = (5V - 2V) / 0.02A = 150Ω
+
+2. **Voltage Divider:**
+   ```
+   Input ----[R1]----+----[R2]---- Ground
+                     |
+                   Output
+   ```
+   - Output = Input × (R2/(R1+R2))
+
+**🎯 Applications | अनुप्रयोग:**
+- Current limiting (LED circuits में)
+- Voltage division (sensor circuits में)
+- Pull-up/pull-down resistors (digital circuits में)
+- Timing circuits (capacitors के साथ)
+- Heat generation (heaters में)
+
+**💡 Exam Important Points:**
+- Ohm's law सबसे important है
+- Power formulas याद रखें
+- Color code पढ़ना आना चाहिए
+- Series में resistance add होते हैं
+- Parallel में 1/R add होते हैं
+
+#### ⚡ 2. Capacitors | संधारित्र (कैपेसिटर)
+
+**Definition | परिभाषा:**
+A capacitor is a two-terminal passive electronic component that stores electrical energy in an electric field. It consists of two conductive plates separated by a dielectric (insulating) material.
+
+**Capacitor एक ऐसा component है जो:**
+- Electric field में energy store करता है
+- दो conducting plates होती हैं
+- Dielectric material से separated होती हैं
+- Sudden voltage changes को oppose करता है
+
+**Symbol | चिह्न:** 
+```
+   ----| |----  (Parallel lines - Non-polarized)
+   ----| (----  (Curved line - Polarized/Electrolytic)
+```
+
+**Unit | इकाई:** Farad (F) - फैराड
+
+**🔬 Working Principle | कार्य सिद्धांत:**
+
+When voltage is applied across a capacitor, charge accumulates on the plates, creating an electric field between them. The capacitor stores this charge and thus energy. It opposes sudden changes in voltage.
+
+**काम कैसे करता है:**
+- Voltage apply करने पर plates पर charge जमा होता है
+- Plates के बीच electric field बनता है
+- Energy store होती है electric field में
+- Sudden voltage changes को oppose करता है
+
+**📐 Fundamental Formulas | मूल सूत्र:**
+
+**Charge Storage | चार्ज संग्रहण:**
+```
+Q = C × V
+```
+Where | जहाँ:
+- Q = Charge stored (Coulombs) | संग्रहीत चार्ज
+- C = Capacitance (Farads) | धारिता
+- V = Voltage across capacitor | कैपेसिटर के across voltage
+
+**Current-Voltage Relationship:**
+```
+I = C × (dV/dt)
+```
+**Energy Stored | संग्रहीत ऊर्जा:**
+```
+E = ½CV² = ½QV = ½Q²/C
+```
+
+**📊 Types of Capacitors | कैपेसिटर के प्रकार:**
+
+1. **Ceramic Capacitors:**
+   - Small values (pF to μF)
+   - Non-polarized
+   - सबसे common type
+
+2. **Electrolytic Capacitors:**
+   - Large values (μF to F)
+   - Polarized (+ और - terminal)
+   - Power supply filtering में use
+
+3. **Tantalum Capacitors:**
+   - Stable और reliable
+   - छोटे size में high capacitance
+
+**🎯 Behavior in Circuits:**
+
+**DC Circuit में:**
+- Initially acts as short circuit
+- Finally acts as open circuit
+- Charging और discharging होता है
+
+**AC Circuit में:**
+- Continuously charges and discharges
+- Reactive power consume करता है
+- Capacitive reactance: Xc = 1/(2πfC)
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+1. **Power Supply Filtering:**
+   - Ripple voltage को smooth करता है
+   - DC supply में AC components को filter करता है
+
+2. **Coupling/Decoupling:**
+   - AC signals को pass करता है
+   - DC को block करता है
+
+3. **Timing Circuits:**
+   - RC time constant = R × C
+   - Charging time = 5RC (approximately)
+
+**🎯 Applications | अनुप्रयोग:**
+- Power supply filtering (smooth DC output)
+- Coupling/decoupling circuits (AC pass, DC block)
+- Timing circuits (delays और oscillators)
+- Energy storage (camera flash, power backup)
+- Motor starting (single phase motors)
+- Frequency selection (tuned circuits)
+
+**💡 Exam Important Points:**
+- Q = CV formula must remember
+- Energy formula = ½CV²
+- DC में final state open circuit
+- AC में reactance Xc = 1/(2πfC)
+- Series में 1/C add होते हैं
+- Parallel में C add होते हैं
+
+#### 🌀 3. Inductors | प्रेरकत्व (इंडक्टर)
+
+**Definition | परिभाषा:**
+An inductor is a two-terminal passive electronic component that stores energy in a magnetic field when electric current flows through it. It typically consists of a coil of wire.
+
+**Inductor एक ऐसा component है जो:**
+- Magnetic field में energy store करता है
+- Coil of wire होता है (तार की कुंडली)
+- Current के sudden changes को oppose करता है
+- Electromagnetic induction के principle पर काम करता है
+
+**Symbol | चिह्न:** 
+```
+   ----∩∩∩∩----  (Coil/helix shape)
+   या
+   ----⋀⋀⋀⋀----  (Series of arcs)
+```
+
+**Unit | इकाई:** Henry (H) - हेनरी
+
+**🔬 Working Principle | कार्य सिद्धांत:**
+
+When current flows through an inductor, it creates a magnetic field. Any change in current causes a change in magnetic field, which induces an EMF that opposes the change in current (Lenz's Law).
+
+**काम कैसे करता है:**
+- Current flow करने से magnetic field बनता है
+- Current change होने पर magnetic field भी change होता है
+- इससे EMF induce होता है (Faraday's Law)
+- यह EMF current change को oppose करता है (Lenz's Law)
+
+**📐 Fundamental Formulas | मूल सूत्र:**
+
+**Magnetic Flux Linkage:**
+```
+Φ = L × I
+```
+Where | जहाँ:
+- Φ = Magnetic flux linkage (Weber-turns) | चुंबकीय फ्लक्स लिंकेज
+- L = Inductance (Henries) | प्रेरकत्व
+- I = Current through inductor | इंडक्टर से होकर बहने वाला current
+
+**Voltage-Current Relationship:**
+```
+V = L × (dI/dt)
+```
+
+**Energy Stored | संग्रहीत ऊर्जा:**
+```
+E = ½LI²
+```
+
+**📊 Types of Inductors | इंडक्टर के प्रकार:**
+
+1. **Air Core Inductors:**
+   - कोई magnetic core नहीं
+   - Low inductance values
+   - High frequency applications
+
+2. **Iron Core Inductors:**
+   - Iron core के साथ
+   - High inductance values
+   - Low frequency applications
+
+3. **Ferrite Core Inductors:**
+   - Ferrite material core
+   - Medium inductance
+   - RF applications
+
+**🎯 Behavior in Circuits:**
+
+**DC Circuit में:**
+- Initially acts as open circuit
+- Finally acts as short circuit
+- Current gradually increases
+
+**AC Circuit में:**
+- Inductive reactance: XL = 2πfL
+- Current lags voltage by 90°
+- Reactive power consume करता है
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+1. **Choke Coil:**
+   - AC को block करता है, DC को pass करता है
+   - Power supplies में filtering
+
+2. **Transformer:**
+   - दो inductors electromagnetically coupled
+   - Voltage step-up या step-down
+
+3. **Motor Windings:**
+   - Rotating magnetic field create करने के लिए
+
+**🎯 Applications | अनुप्रयोग:**
+- Filters (AC block, DC pass करने के लिए)
+- Chokes (unwanted AC components को remove करने के लिए)
+- Energy storage (switching power supplies में)
+- Resonant circuits (LC oscillators)
+- Transformers (voltage conversion)
+- Motor windings (electromagnetic motors)
+
+**💡 Exam Important Points:**
+- V = L(dI/dt) formula important है
+- Energy = ½LI²
+- DC में final state short circuit
+- AC में reactance XL = 2πfL
+- Series में L add होते हैं
+- Parallel में 1/L add होते हैं
+- Lenz's law - opposes change in current
+
+---
+
+### ⚡ B. Active Components | एक्टिव कॉम्पोनेंट्स
+
+**Definition | परिभाषा:**
 Active components are those that require an external power source to operate and can amplify or generate a signal. They exhibit control over current or voltage.
 
-##### 1. Diodes
+**Active components वे होते हैं जो:**
+- External power source की जरूरत होती है
+- Signal को amplify कर सकते हैं
+- Current या voltage को control कर सकते हैं
+- Switching और amplification के लिए use होते हैं
 
-* **Definition:** A diode is a two-terminal semiconductor device that essentially acts as a one-way valve for current. It allows current to flow easily in one direction (forward bias) and blocks current flow in the opposite direction (reverse bias).
-* **Symbol:** An arrow pointing towards a bar (anode to cathode).
-* **Working Principle:** Diodes are made from p-n junctions.
-    * **Forward Bias:** When the anode (p-side) is made positive with respect to the cathode (n-side), the depletion region shrinks, and current flows. There's a small voltage drop (typically 0.7V for silicon diodes, 0.3V for germanium).
-    * **Reverse Bias:** When the cathode is positive with respect to the anode, the depletion region widens, and virtually no current flows (except for a very small leakage current) until the breakdown voltage is reached.
-* **I-V Characteristic:** Non-linear. Exponential current increase in forward bias after the knee voltage, very little current in reverse bias until breakdown.
-* **Ideal Diode Model:**
-    * Forward Bias: Acts as a short circuit (0V drop).
-    * Reverse Bias: Acts as an open circuit (infinite resistance).
-* **Real Diode Equation (Shockley Diode Equation):**
-    * $I = I_S (e^{\frac{V_D}{\eta V_T}} - 1)$
-        * Where:
-            * $I$ = Diode current
-            * $I_S$ = Reverse saturation current (temperature dependent)
-            * $V_D$ = Voltage across the diode
-            * $\eta$ = Ideality factor (1 to 2, depending on the manufacturing process)
-            * $V_T$ = Thermal voltage ($kT/q$, approx. 25.85 mV at room temperature)
-* **Applications:** Rectification (converting AC to DC), voltage regulation (Zener diodes), signal limiting, switching, light-emitting diodes (LEDs).
+**🔑 Key Characteristics:**
+- Need external power supply
+- Can provide gain (amplification)
+- Non-linear behavior
+- Control and switching capabilities
+
+**मुख्य विशेषताएं:**
+- External power की जरूरत
+- Gain provide कर सकते हैं
+- Non-linear behavior
+- Control और switching capabilities
+
+```
+📊 Active Components Overview:
+    ┌─────────────────────────────────────┐
+    │        Active Components            │
+    └─────────────┬───────────────────────┘
+                  │
+        ┌─────────┴─────────┐
+        │                   │
+   ┌────▼────┐       ┌─────▼─────┐
+   │ 2-Terminal│      │3-Terminal │
+   └─────────┘       └───────────┘
+        │                   │
+   ┌────▼────┐       ┌─────▼─────┐
+   │ Diodes  │       │Transistors│
+   └─────────┘       └───────────┘
+```
+
+#### 🔺 1. Diodes | डायोड
+
+**Definition | परिभाषा:**
+A diode is a two-terminal semiconductor device that essentially acts as a one-way valve for current. It allows current to flow easily in one direction (forward bias) and blocks current flow in the opposite direction (reverse bias).
+
+**Diode एक ऐसा component है जो:**
+- एक तरफ से current flow करने देता है
+- दूसरी तरफ से current को block करता है
+- एक check valve की तरह काम करता है
+- P-N junction से बना होता है
+
+**Symbol | चिह्न:** 
+```
+    Anode    Cathode
+      +        -
+   ---|>|---   (Arrow pointing towards bar)
+```
+
+**🔬 Working Principle | कार्य सिद्धांत:**
+
+Diodes are made from p-n junctions (P-type और N-type semiconductor materials के junction)
+
+**Forward Bias (आगे की दिशा):**
+- Anode (+) positive, Cathode (-) negative
+- Depletion region shrinks
+- Current flows easily
+- Voltage drop: ~0.7V (Silicon), ~0.3V (Germanium)
+
+**Reverse Bias (पीछे की दिशा):**
+- Anode (-) negative, Cathode (+) positive  
+- Depletion region widens
+- Very little current flows (leakage current)
+- Acts like open circuit
+
+```
+📊 Diode I-V Characteristic:
+         │ Current (I)
+         │     ╱
+         │    ╱
+         │   ╱ Forward Bias
+    ─────┼──╱─────────── Voltage (V)
+         │ ╱ 0.7V
+         │╱
+    Reverse│ Bias
+         │
+```
+
+**🎯 Types of Diodes | डायोड के प्रकार:**
+
+1. **Silicon Diode:**
+   - Forward voltage drop: 0.7V
+   - सबसे common type
+   - General purpose applications
+
+2. **Germanium Diode:**
+   - Forward voltage drop: 0.3V
+   - Low voltage applications
+
+3. **Zener Diode:**
+   - Reverse breakdown voltage पर constant voltage
+   - Voltage regulation के लिए
+
+4. **LED (Light Emitting Diode):**
+   - Forward bias में light emit करता है
+   - Different colors available
+
+5. **Schottky Diode:**
+   - Very low forward voltage drop (0.2-0.3V)
+   - High frequency applications
+
+**📐 Mathematical Models:**
+
+**Ideal Diode Model:**
+- Forward Bias: Short circuit (0V drop)
+- Reverse Bias: Open circuit (∞ resistance)
+
+**Practical Diode Model:**
+- Forward Bias: Constant voltage drop (0.7V for Si)
+- Reverse Bias: Open circuit
+
+**Shockley Diode Equation:**
+```
+I = Is(e^(V/ηVt) - 1)
+```
+Where:
+- Is = Reverse saturation current
+- V = Diode voltage
+- η = Ideality factor (1-2)
+- Vt = Thermal voltage (≈26mV at room temperature)
+
+**📊 Practical Examples | व्यावहारिक उदाहरण:**
+
+1. **Rectifier Circuit:**
+   - AC को DC में convert करना
+   - Half-wave और Full-wave rectifiers
+
+2. **Protection Circuit:**
+   - Reverse polarity protection
+   - Overvoltage protection
+
+3. **Clipping/Limiting:**
+   - Signal को limit करना
+   - Unwanted peaks को remove करना
+
+**🎯 Applications | अनुप्रयोग:**
+- Rectification (AC to DC conversion)
+- Voltage regulation (Zener diodes)
+- Signal limiting/clipping
+- Switching applications
+- Light emission (LEDs)
+- Solar cells (photovoltaic diodes)
+- Radio frequency mixing
+
+**💡 Exam Important Points:**
+- Forward bias में 0.7V drop (Silicon)
+- Reverse bias में open circuit
+- I-V characteristic curve जानना important
+- Different types और applications
+- Rectifier circuits में use
+- Symbol correctly draw करना
 
 ##### 2. Transistors
 
